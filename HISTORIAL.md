@@ -1,6 +1,6 @@
 # Historial de desarrollo de NOTI ICE
 
-Este repositorio contiene la versión consolidada del portal NOTI ICE. Lo creamos el 21 de noviembre de 2026 para la entrega del proyecto de titulación, a partir de nuestro repositorio de trabajo anterior.
+Este repositorio contiene la versión consolidada del portal NOTI ICE. Lo creamos para la entrega del proyecto de titulación, a partir de nuestro repositorio de trabajo anterior.
 
 ## ¿Por qué un repositorio nuevo?
 
