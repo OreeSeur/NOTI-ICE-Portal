@@ -3,6 +3,12 @@
 Toda la documentación técnica del proyecto está reunida aquí, agrupada por área y
 numerada en el orden de lectura recomendado.
 
+## Manual de usuario (`manual/`)
+
+| Documento | Contenido |
+|---|---|
+| [Manual_de_usuario.pdf](manual/Manual_de_usuario.pdf) | Uso del portal por perfil (acceso, funciones comunes, Alumno, Docente, Administrador y teléfono), con capturas de cada pantalla. También en [Word](manual/Manual_de_usuario.docx). |
+
 ## Frontend (`frontend/`)
 
 | Documento | Contenido |
