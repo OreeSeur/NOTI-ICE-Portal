@@ -41,6 +41,7 @@ La guía operativa del servidor está en [`deploy/production/README.md`](../depl
 | Documento | Contenido |
 |---|---|
 | [02-fusion-modelos-academicos.md](desarrollo/02-fusion-modelos-academicos.md) | Diseño de la unificación del modelo académico por periodo. |
+| [Importacion_oferta_academica.pdf](desarrollo/Importacion_oferta_academica.pdf) | Procedimiento de importación de grupos, materias y horarios desde el sistema de horarios de la ESIME, con el script `database/oferta/Procesar-Horarios-ICE.ps1`. También en [Word](desarrollo/Importacion_oferta_academica.docx). |
 
 ## Pruebas
 
