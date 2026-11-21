@@ -1,0 +1,2210 @@
+[
+ {
+  "metodo": "POST",
+  "ruta": "/auth/login",
+  "codigo": 200,
+  "ms": 161,
+  "respuesta": {
+   "token": "<omitido>",
+   "idUsuario": 13,
+   "nombre": "Admin Pruebas Cap4",
+   "correo": "admin.cap4@prueba.local",
+   "idRol": 1,
+   "rolNombre": "Administrador",
+   "noIdentificacion": "CAP4-ADM-01",
+   "carrera": null,
+   "semestre": null
+  }
+ },
+ {
+  "metodo": "POST",
+  "ruta": "/auth/login",
+  "codigo": 200,
+  "ms": 155,
+  "respuesta": {
+   "token": "<omitido>",
+   "idUsuario": 14,
+   "nombre": "Docente Uno Cap4",
+   "correo": "docente1.cap4@prueba.local",
+   "idRol": 2,
+   "rolNombre": "Docente",
+   "noIdentificacion": "CAP4-DOC-01",
+   "carrera": null,
+   "semestre": null
+  }
+ },
+ {
+  "metodo": "POST",
+  "ruta": "/auth/login",
+  "codigo": 200,
+  "ms": 157,
+  "respuesta": {
+   "token": "<omitido>",
+   "idUsuario": 15,
+   "nombre": "Docente Dos Cap4",
+   "correo": "docente2.cap4@prueba.local",
+   "idRol": 2,
+   "rolNombre": "Docente",
+   "noIdentificacion": "CAP4-DOC-02",
+   "carrera": null,
+   "semestre": null
+  }
+ },
+ {
+  "metodo": "POST",
+  "ruta": "/auth/login",
+  "codigo": 200,
+  "ms": 150,
+  "respuesta": {
+   "token": "<omitido>",
+   "idUsuario": 16,
+   "nombre": "Alumno Uno Cap4",
+   "correo": "alumno1.cap4@prueba.local",
+   "idRol": 3,
+   "rolNombre": "Alumno",
+   "noIdentificacion": "CAP4-ALU-01",
+   "carrera": "Ingeniería en Comunicaciones y Electrónica",
+   "semestre": 1
+  }
+ },
+ {
+  "metodo": "POST",
+  "ruta": "/auth/login",
+  "codigo": 200,
+  "ms": 158,
+  "respuesta": {
+   "token": "<omitido>",
+   "idUsuario": 17,
+   "nombre": "Alumno Dos Cap4",
+   "correo": "alumno2.cap4@prueba.local",
+   "idRol": 3,
+   "rolNombre": "Alumno",
+   "noIdentificacion": "CAP4-ALU-02",
+   "carrera": "Ingeniería en Comunicaciones y Electrónica",
+   "semestre": 5
+  }
+ },
+ {
+  "metodo": "POST",
+  "ruta": "/auth/register",
+  "codigo": 200,
+  "ms": 147,
+  "respuesta": {
+   "token": "<omitido>",
+   "idUsuario": 26,
+   "nombre": "Alumno Registro Cap4",
+   "correo": "aut01.193256.cap4@prueba.local",
+   "idRol": 3,
+   "rolNombre": "Alumno",
+   "noIdentificacion": "R193256",
+   "carrera": "Ingeniería en Comunicaciones y Electrónica",
+   "semestre": 3
+  }
+ },
+ {
+  "metodo": "POST",
+  "ruta": "/auth/login",
+  "codigo": 200,
+  "ms": 143,
+  "respuesta": {
+   "token": "<omitido>",
+   "idUsuario": 26,
+   "nombre": "Alumno Registro Cap4",
+   "correo": "aut01.193256.cap4@prueba.local",
+   "idRol": 3,
+   "rolNombre": "Alumno",
+   "noIdentificacion": "R193256",
+   "carrera": "Ingeniería en Comunicaciones y Electrónica",
+   "semestre": 3
+  }
+ },
+ {
+  "metodo": "POST",
+  "ruta": "/auth/register",
+  "codigo": 400,
+  "ms": 34,
+  "respuesta": {
+   "mensaje": "Ya existe un usuario con ese correo"
+  }
+ },
+ {
+  "metodo": "POST",
+  "ruta": "/auth/login",
+  "codigo": 200,
+  "ms": 153,
+  "respuesta": {
+   "token": "<omitido>",
+   "idUsuario": 13,
+   "nombre": "Admin Pruebas Cap4",
+   "correo": "admin.cap4@prueba.local",
+   "idRol": 1,
+   "rolNombre": "Administrador",
+   "noIdentificacion": "CAP4-ADM-01",
+   "carrera": null,
+   "semestre": null
+  }
+ },
+ {
+  "metodo": "POST",
+  "ruta": "/auth/login",
+  "codigo": 401,
+  "ms": 156,
+  "respuesta": {
+   "mensaje": "Correo o contraseña incorrectos"
+  }
+ },
+ {
+  "metodo": "POST",
+  "ruta": "/auth/login",
+  "codigo": 401,
+  "ms": 31,
+  "respuesta": {
+   "mensaje": "Correo o contraseña incorrectos"
+  }
+ },
+ {
+  "metodo": "GET",
+  "ruta": "/usuarios",
+  "codigo": 401,
+  "ms": 25,
+  "respuesta": ""
+ },
+ {
+  "metodo": "GET",
+  "ruta": "/usuarios",
+  "codigo": 401,
+  "ms": 15,
+  "respuesta": ""
+ },
+ {
+  "metodo": "POST",
+  "ruta": "/auth/olvide-contrasena",
+  "codigo": 200,
+  "ms": 12,
+  "respuesta": {
+   "mensaje": "Si el correo está registrado, recibirás un enlace para restablecer tu contraseña."
+  }
+ },
+ {
+  "metodo": "POST",
+  "ruta": "/auth/olvide-contrasena",
+  "codigo": 200,
+  "ms": 20,
+  "respuesta": {
+   "mensaje": "Si el correo está registrado, recibirás un enlace para restablecer tu contraseña."
+  }
+ },
+ {
+  "metodo": "POST",
+  "ruta": "/auth/restablecer-contrasena",
+  "codigo": 400,
+  "ms": 29,
+  "respuesta": {
+   "mensaje": "La contraseña debe tener al menos 8 caracteres."
+  }
+ },
+ {
+  "metodo": "POST",
+  "ruta": "/auth/restablecer-contrasena",
+  "codigo": 200,
+  "ms": 155,
+  "respuesta": {
+   "mensaje": "Contraseña actualizada. Ya puedes iniciar sesión."
+  }
+ },
+ {
+  "metodo": "POST",
+  "ruta": "/auth/restablecer-contrasena",
+  "codigo": 400,
+  "ms": 32,
+  "respuesta": {
+   "mensaje": "El enlace no es válido o ya venció. Solicita uno nuevo."
+  }
+ },
+ {
+  "metodo": "POST",
+  "ruta": "/auth/restablecer-contrasena",
+  "codigo": 400,
+  "ms": 10,
+  "respuesta": {
+   "mensaje": "El enlace no es válido o ya venció. Solicita uno nuevo."
+  }
+ },
+ {
+  "metodo": "POST",
+  "ruta": "/auth/login",
+  "codigo": 200,
+  "ms": 128,
+  "respuesta": {
+   "token": "<omitido>",
+   "idUsuario": 26,
+   "nombre": "Alumno Registro Cap4",
+   "correo": "aut01.193256.cap4@prueba.local",
+   "idRol": 3,
+   "rolNombre": "Alumno",
+   "noIdentificacion": "R193256",
+   "carrera": "Ingeniería en Comunicaciones y Electrónica",
+   "semestre": 3
+  }
+ },
+ {
+  "metodo": "POST",
+  "ruta": "/auth/register",
+  "codigo": 400,
+  "ms": 33,
+  "respuesta": {
+   "mensaje": "La contraseña no puede superar 72 bytes (72 caracteres sin acentos ni símbolos especiales)."
+  }
+ },
+ {
+  "metodo": "POST",
+  "ruta": "/noticias",
+  "codigo": 201,
+  "ms": 35,
+  "respuesta": {
+   "idNoticia": 15,
+   "titulo": "Cap4 NOT-01 Alumnos ICE 1er semestre",
+   "contenido": "Contenido de prueba del capitulo 4 para verificar el modulo.",
+   "idUsuario": 13,
+   "autorNombre": "Admin Pruebas Cap4",
+   "idCategoria": null,
+   "categoriaNombre": null,
+   "fechaPublicacion": "2026-11-19T00:00:00",
+   "fechaAlta": "2026-11-19T19:33:00.0657633-06:00",
+   "activo": true,
+   "fechaExpiracion": "2027-05-19T00:00:00",
+   "vigente": true,
+   "audiencia": {
+    "roles": [
+     "Alumno"
+    ],
+    "carreras": [
+     "Ingeniería en Comunicaciones y Electrónica"
+    ],
+    "semestres": [
+     "1"
+    ],
+    "categorias": [
+     "todos"
+    ],
+    "gruposOferta": [],
+    "academias": [],
+    "unidadesOferta": [],
+    "prioridad": "normal"
+   }
+  }
+ },
+ {
+  "metodo": "GET",
+  "ruta": "/noticias",
+  "codigo": 200,
+  "ms": 12,
+  "respuesta": "[lista de 11]"
+ },
+ {
+  "metodo": "GET",
+  "ruta": "/noticias",
+  "codigo": 200,
+  "ms": 33,
+  "respuesta": "[lista de 8]"
+ },
+ {
+  "metodo": "GET",
+  "ruta": "/noticias",
+  "codigo": 200,
+  "ms": 31,
+  "respuesta": "[lista de 7]"
+ },
+ {
+  "metodo": "POST",
+  "ruta": "/noticias",
+  "codigo": 201,
+  "ms": 12,
+  "respuesta": {
+   "idNoticia": 16,
+   "titulo": "Cap4 NOT-02 sin vigencia",
+   "contenido": "Contenido de prueba del capitulo 4 para verificar el modulo.",
+   "idUsuario": 13,
+   "autorNombre": "Admin Pruebas Cap4",
+   "idCategoria": null,
+   "categoriaNombre": null,
+   "fechaPublicacion": "2026-11-19T00:00:00",
+   "fechaAlta": "2026-11-19T19:33:00.1556772-06:00",
+   "activo": true,
+   "fechaExpiracion": "2027-05-19T00:00:00",
+   "vigente": true,
+   "audiencia": {
+    "roles": [
+     "todos"
+    ],
+    "carreras": [
+     "todos"
+    ],
+    "semestres": [
+     "todos"
+    ],
+    "categorias": [
+     "todos"
+    ],
+    "gruposOferta": [],
+    "academias": [],
+    "unidadesOferta": [],
+    "prioridad": "normal"
+   }
+  }
+ },
+ {
+  "metodo": "POST",
+  "ruta": "/noticias",
+  "codigo": 400,
+  "ms": 34,
+  "respuesta": {
+   "mensaje": "La fecha de vigencia no puede ser anterior a la fecha de publicación"
+  }
+ },
+ {
+  "metodo": "GET",
+  "ruta": "/noticias",
+  "codigo": 200,
+  "ms": 28,
+  "respuesta": "[lista de 11]"
+ },
+ {
+  "metodo": "GET",
+  "ruta": "/noticias/16",
+  "codigo": 404,
+  "ms": 32,
+  "respuesta": {
+   "mensaje": "Esta noticia ya no está vigente"
+  }
+ },
+ {
+  "metodo": "GET",
+  "ruta": "/noticias?incluirExpiradas=true",
+  "codigo": 200,
+  "ms": 29,
+  "respuesta": "[lista de 14]"
+ },
+ {
+  "metodo": "PUT",
+  "ruta": "/noticias/16",
+  "codigo": 204,
+  "ms": 33,
+  "respuesta": ""
+ },
+ {
+  "metodo": "GET",
+  "ruta": "/noticias/16",
+  "codigo": 200,
+  "ms": 10,
+  "respuesta": {
+   "idNoticia": 16,
+   "titulo": "Cap4 NOT-02 renovada",
+   "contenido": "Contenido de prueba del capitulo 4 para verificar el modulo.",
+   "idUsuario": 13,
+   "autorNombre": "Admin Pruebas Cap4",
+   "idCategoria": null,
+   "categoriaNombre": null,
+   "fechaPublicacion": "2026-11-19T00:00:00",
+   "fechaAlta": "2026-11-19T19:33:00",
+   "activo": true,
+   "fechaExpiracion": "2026-12-19T00:00:00",
+   "vigente": true,
+   "audiencia": {
+    "roles": [
+     "todos"
+    ],
+    "carreras": [
+     "todos"
+    ],
+    "semestres": [
+     "todos"
+    ],
+    "categorias": [
+     "todos"
+    ],
+    "gruposOferta": [],
+    "academias": [],
+    "unidadesOferta": [],
+    "prioridad": "normal"
+   }
+  }
+ },
+ {
+  "metodo": "PUT",
+  "ruta": "/noticias/16",
+  "codigo": 204,
+  "ms": 34,
+  "respuesta": ""
+ },
+ {
+  "metodo": "GET",
+  "ruta": "/noticias/16",
+  "codigo": 200,
+  "ms": 30,
+  "respuesta": {
+   "idNoticia": 16,
+   "titulo": "Cap4 NOT-07 titulo editado",
+   "contenido": "Contenido editado del capitulo 4 para la prueba.",
+   "idUsuario": 13,
+   "autorNombre": "Admin Pruebas Cap4",
+   "idCategoria": null,
+   "categoriaNombre": null,
+   "fechaPublicacion": "2026-11-19T00:00:00",
+   "fechaAlta": "2026-11-19T19:33:00",
+   "activo": true,
+   "fechaExpiracion": "2026-12-19T00:00:00",
+   "vigente": true,
+   "audiencia": {
+    "roles": [
+     "todos"
+    ],
+    "carreras": [
+     "todos"
+    ],
+    "semestres": [
+     "todos"
+    ],
+    "categorias": [
+     "todos"
+    ],
+    "gruposOferta": [],
+    "academias": [],
+    "unidadesOferta": [],
+    "prioridad": "normal"
+   }
+  }
+ },
+ {
+  "metodo": "GET",
+  "ruta": "/noticias",
+  "codigo": 200,
+  "ms": 12,
+  "respuesta": "[lista de 12]"
+ },
+ {
+  "metodo": "POST",
+  "ruta": "/noticias",
+  "codigo": 201,
+  "ms": 13,
+  "respuesta": {
+   "idNoticia": 17,
+   "titulo": "Cap4 NOT-08 para eliminar",
+   "contenido": "Contenido de prueba del capitulo 4 para verificar el modulo.",
+   "idUsuario": 13,
+   "autorNombre": "Admin Pruebas Cap4",
+   "idCategoria": null,
+   "categoriaNombre": null,
+   "fechaPublicacion": "2026-11-19T00:00:00",
+   "fechaAlta": "2026-11-19T19:33:00.4486529-06:00",
+   "activo": true,
+   "fechaExpiracion": "2027-05-19T00:00:00",
+   "vigente": true,
+   "audiencia": {
+    "roles": [
+     "todos"
+    ],
+    "carreras": [
+     "todos"
+    ],
+    "semestres": [
+     "todos"
+    ],
+    "categorias": [
+     "todos"
+    ],
+    "gruposOferta": [],
+    "academias": [],
+    "unidadesOferta": [],
+    "prioridad": "normal"
+   }
+  }
+ },
+ {
+  "metodo": "DELETE",
+  "ruta": "/noticias/17",
+  "codigo": 204,
+  "ms": 11,
+  "respuesta": ""
+ },
+ {
+  "metodo": "GET",
+  "ruta": "/noticias/17",
+  "codigo": 404,
+  "ms": 24,
+  "respuesta": {
+   "mensaje": "No se encontró la noticia con id 17"
+  }
+ },
+ {
+  "metodo": "POST",
+  "ruta": "/noticias",
+  "codigo": 201,
+  "ms": 31,
+  "respuesta": {
+   "idNoticia": 18,
+   "titulo": "Cap4 NOT-09 noticia del Docente 1",
+   "contenido": "Contenido de prueba del capitulo 4 para verificar el modulo.",
+   "idUsuario": 14,
+   "autorNombre": "Docente Uno Cap4",
+   "idCategoria": null,
+   "categoriaNombre": null,
+   "fechaPublicacion": "2026-11-19T00:00:00",
+   "fechaAlta": "2026-11-19T19:33:00.5485816-06:00",
+   "activo": true,
+   "fechaExpiracion": "2027-05-19T00:00:00",
+   "vigente": true,
+   "audiencia": {
+    "roles": [
+     "todos"
+    ],
+    "carreras": [
+     "todos"
+    ],
+    "semestres": [
+     "todos"
+    ],
+    "categorias": [
+     "todos"
+    ],
+    "gruposOferta": [],
+    "academias": [],
+    "unidadesOferta": [],
+    "prioridad": "normal"
+   }
+  }
+ },
+ {
+  "metodo": "PUT",
+  "ruta": "/noticias/18",
+  "codigo": 403,
+  "ms": 27,
+  "respuesta": {
+   "mensaje": "Solo puedes modificar las noticias que tú publicaste"
+  }
+ },
+ {
+  "metodo": "DELETE",
+  "ruta": "/noticias/18",
+  "codigo": 403,
+  "ms": 31,
+  "respuesta": {
+   "mensaje": "Solo puedes eliminar las noticias que tú publicaste"
+  }
+ },
+ {
+  "metodo": "GET",
+  "ruta": "/noticias/15",
+  "codigo": 404,
+  "ms": 34,
+  "respuesta": {
+   "type": "https://tools.ietf.org/html/rfc9110#section-15.5.5",
+   "title": "Not Found",
+   "status": 404,
+   "traceId": "00-d1b8ed39c4ea638e63050af253920984-5959ef762552b0fb-00"
+  }
+ },
+ {
+  "metodo": "POST",
+  "ruta": "/eventos",
+  "codigo": 201,
+  "ms": 33,
+  "respuesta": {
+   "idEvento": 4,
+   "titulo": "Cap4 EVD-01 Evento",
+   "descripcion": "Evento de prueba del capitulo 4.",
+   "lugar": "Auditorio",
+   "fechaInicio": "2026-11-26T00:00:00",
+   "fechaFin": "2026-11-26T00:00:00",
+   "horaInicio": null,
+   "horaFin": null,
+   "idUsuario": 13,
+   "organizadorNombre": "Admin Pruebas Cap4",
+   "categoriaEvento": null,
+   "activo": true,
+   "audiencia": {
+    "roles": [
+     "Alumno"
+    ],
+    "carreras": [
+     "todos"
+    ],
+    "semestres": [
+     "todos"
+    ],
+    "categorias": [
+     "todos"
+    ],
+    "gruposOferta": [],
+    "academias": [],
+    "unidadesOferta": [],
+    "prioridad": "normal"
+   }
+  }
+ },
+ {
+  "metodo": "GET",
+  "ruta": "/eventos",
+  "codigo": 200,
+  "ms": 28,
+  "respuesta": "[lista de 3]"
+ },
+ {
+  "metodo": "GET",
+  "ruta": "/eventos",
+  "codigo": 200,
+  "ms": 30,
+  "respuesta": "[lista de 0]"
+ },
+ {
+  "metodo": "POST",
+  "ruta": "/documentos",
+  "codigo": 200,
+  "ms": 34,
+  "respuesta": {
+   "idNoticiaDocumento": 5,
+   "idUsuario": 14,
+   "autorNombre": "Docente Uno Cap4",
+   "titulo": "Cap4 EVD-02 Documento",
+   "descripcion": "Documento de prueba del capitulo 4.",
+   "tipoDocumento": "pdf",
+   "rutaArchivo": "/uploads/699818f7-5dcb-4bc4-8e9b-e1ae5194fb48_cap4_prueba.pdf",
+   "url": null,
+   "fechaPublicacion": "2026-11-19T19:33:00.7677883-06:00",
+   "activo": true,
+   "audiencia": {
+    "roles": [
+     "Alumno"
+    ],
+    "carreras": [
+     "Ingeniería en Comunicaciones y Electrónica"
+    ],
+    "semestres": [
+     "1"
+    ],
+    "categorias": [
+     "todos"
+    ],
+    "gruposOferta": [],
+    "academias": [],
+    "unidadesOferta": [],
+    "prioridad": "normal"
+   }
+  }
+ },
+ {
+  "metodo": "GET",
+  "ruta": "/documentos/5/archivo",
+  "codigo": 200,
+  "ms": 28,
+  "respuesta": "%PDF-1.4\n1 0 obj<</Type/Catalog>>endobj\ntrailer<</Root 1 0 R>>\n%%EOF\n"
+ },
+ {
+  "metodo": "PUT",
+  "ruta": "/documentos/5",
+  "codigo": 204,
+  "ms": 12,
+  "respuesta": ""
+ },
+ {
+  "metodo": "PUT",
+  "ruta": "/documentos/5",
+  "codigo": 403,
+  "ms": 32,
+  "respuesta": {
+   "mensaje": "Solo puedes modificar los documentos que tú publicaste"
+  }
+ },
+ {
+  "metodo": "POST",
+  "ruta": "/eventos",
+  "codigo": 403,
+  "ms": 9,
+  "respuesta": ""
+ },
+ {
+  "metodo": "POST",
+  "ruta": "/documentos",
+  "codigo": 403,
+  "ms": 21,
+  "respuesta": ""
+ },
+ {
+  "metodo": "GET",
+  "ruta": "/documentos/5/archivo",
+  "codigo": 200,
+  "ms": 35,
+  "respuesta": "%PDF-1.4\n1 0 obj<</Type/Catalog>>endobj\ntrailer<</Root 1 0 R>>\n%%EOF\n"
+ },
+ {
+  "metodo": "GET",
+  "ruta": "/documentos/5/archivo",
+  "codigo": 404,
+  "ms": 28,
+  "respuesta": {
+   "type": "https://tools.ietf.org/html/rfc9110#section-15.5.5",
+   "title": "Not Found",
+   "status": 404,
+   "traceId": "00-a12b2e4d516116656ffed7faa362abc7-44e23e4b41ac5778-00"
+  }
+ },
+ {
+  "metodo": "POST",
+  "ruta": "/noticias",
+  "codigo": 201,
+  "ms": 33,
+  "respuesta": {
+   "idNoticia": 19,
+   "titulo": "Cap4 COM noticia para comentarios",
+   "contenido": "Contenido de prueba del capitulo 4 para verificar el modulo.",
+   "idUsuario": 13,
+   "autorNombre": "Admin Pruebas Cap4",
+   "idCategoria": null,
+   "categoriaNombre": null,
+   "fechaPublicacion": "2026-11-19T00:00:00",
+   "fechaAlta": "2026-11-19T19:33:00.9666302-06:00",
+   "activo": true,
+   "fechaExpiracion": "2027-05-19T00:00:00",
+   "vigente": true,
+   "audiencia": {
+    "roles": [
+     "todos"
+    ],
+    "carreras": [
+     "todos"
+    ],
+    "semestres": [
+     "todos"
+    ],
+    "categorias": [
+     "todos"
+    ],
+    "gruposOferta": [],
+    "academias": [],
+    "unidadesOferta": [],
+    "prioridad": "normal"
+   }
+  }
+ },
+ {
+  "metodo": "POST",
+  "ruta": "/comentarios",
+  "codigo": 201,
+  "ms": 31,
+  "respuesta": {
+   "idComentario": 10,
+   "comentarioTexto": "Comentario de prueba COM-01",
+   "fechaPublicacion": "2026-11-19T19:33:00.9995057-06:00",
+   "idUsuario": 16,
+   "autorNombre": "Alumno Uno Cap4"
+  }
+ },
+ {
+  "metodo": "GET",
+  "ruta": "/comentarios/porNoticia/19",
+  "codigo": 200,
+  "ms": 28,
+  "respuesta": "[lista de 1]"
+ },
+ {
+  "metodo": "POST",
+  "ruta": "/comentarios",
+  "codigo": 401,
+  "ms": 21,
+  "respuesta": ""
+ },
+ {
+  "metodo": "POST",
+  "ruta": "/comentarios",
+  "codigo": 400,
+  "ms": 11,
+  "respuesta": {
+   "mensaje": "El comentario no puede estar vacío"
+  }
+ },
+ {
+  "metodo": "POST",
+  "ruta": "/comentarios",
+  "codigo": 400,
+  "ms": 29,
+  "respuesta": {
+   "mensaje": "El comentario no puede tener más de 1000 caracteres"
+  }
+ },
+ {
+  "metodo": "POST",
+  "ruta": "/comentarios",
+  "codigo": 201,
+  "ms": 33,
+  "respuesta": {
+   "idComentario": 11,
+   "comentarioTexto": "yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy",
+   "fechaPublicacion": "2026-11-19T19:33:01.1213235-06:00",
+   "idUsuario": 16,
+   "autorNombre": "Alumno Uno Cap4"
+  }
+ },
+ {
+  "metodo": "POST",
+  "ruta": "/comentarios",
+  "codigo": 201,
+  "ms": 13,
+  "respuesta": {
+   "idComentario": 12,
+   "comentarioTexto": "Intento de suplantacion",
+   "fechaPublicacion": "2026-11-19T19:33:01.134891-06:00",
+   "idUsuario": 16,
+   "autorNombre": "Alumno Uno Cap4"
+  }
+ },
+ {
+  "metodo": "DELETE",
+  "ruta": "/comentarios/10",
+  "codigo": 403,
+  "ms": 29,
+  "respuesta": {
+   "mensaje": "Solo puedes eliminar tus propios comentarios"
+  }
+ },
+ {
+  "metodo": "DELETE",
+  "ruta": "/comentarios/10",
+  "codigo": 204,
+  "ms": 32,
+  "respuesta": ""
+ },
+ {
+  "metodo": "POST",
+  "ruta": "/comentarios",
+  "codigo": 400,
+  "ms": 21,
+  "respuesta": {
+   "mensaje": "La noticia ya no está vigente y no admite comentarios"
+  }
+ },
+ {
+  "metodo": "DELETE",
+  "ruta": "/comentarios/11",
+  "codigo": 204,
+  "ms": 30,
+  "respuesta": ""
+ },
+ {
+  "metodo": "GET",
+  "ruta": "/roles",
+  "codigo": 200,
+  "ms": 9,
+  "respuesta": "[lista de 3]"
+ },
+ {
+  "metodo": "POST",
+  "ruta": "/usuarios",
+  "codigo": 201,
+  "ms": 149,
+  "respuesta": {
+   "idUsuario": 27,
+   "nombre": "Usuario Creado Cap4",
+   "idRol": 2,
+   "rolNombre": null,
+   "noIdentificacion": "U193256",
+   "correo": "usr01.193256.cap4@prueba.local",
+   "activo": true
+  }
+ },
+ {
+  "metodo": "POST",
+  "ruta": "/auth/login",
+  "codigo": 200,
+  "ms": 158,
+  "respuesta": {
+   "token": "<omitido>",
+   "idUsuario": 27,
+   "nombre": "Usuario Creado Cap4",
+   "correo": "usr01.193256.cap4@prueba.local",
+   "idRol": 2,
+   "rolNombre": "Docente",
+   "noIdentificacion": "U193256",
+   "carrera": null,
+   "semestre": null
+  }
+ },
+ {
+  "metodo": "PUT",
+  "ruta": "/usuarios/27",
+  "codigo": 204,
+  "ms": 28,
+  "respuesta": ""
+ },
+ {
+  "metodo": "GET",
+  "ruta": "/oferta-academica/periodos",
+  "codigo": 401,
+  "ms": 24,
+  "respuesta": ""
+ },
+ {
+  "metodo": "POST",
+  "ruta": "/auth/login",
+  "codigo": 200,
+  "ms": 140,
+  "respuesta": {
+   "token": "<omitido>",
+   "idUsuario": 27,
+   "nombre": "Usuario Creado Cap4",
+   "correo": "usr01.193256.cap4@prueba.local",
+   "idRol": 3,
+   "rolNombre": "Alumno",
+   "noIdentificacion": "U193256",
+   "carrera": null,
+   "semestre": null
+  }
+ },
+ {
+  "metodo": "DELETE",
+  "ruta": "/usuarios/27",
+  "codigo": 204,
+  "ms": 36,
+  "respuesta": ""
+ },
+ {
+  "metodo": "POST",
+  "ruta": "/auth/login",
+  "codigo": 401,
+  "ms": 26,
+  "respuesta": {
+   "mensaje": "Correo o contraseña incorrectos"
+  }
+ },
+ {
+  "metodo": "GET",
+  "ruta": "/oferta-academica/periodos",
+  "codigo": 401,
+  "ms": 11,
+  "respuesta": ""
+ },
+ {
+  "metodo": "PUT",
+  "ruta": "/auth/perfil",
+  "codigo": 200,
+  "ms": 10,
+  "respuesta": {
+   "idUsuario": 16,
+   "nombre": "Alumno Uno Cap4",
+   "correo": "alumno1.cap4@prueba.local",
+   "noIdentificacion": "CAP4-ALU-01",
+   "carrera": "Ingeniería en Comunicaciones y Electrónica",
+   "semestre": 1
+  }
+ },
+ {
+  "metodo": "GET",
+  "ruta": "/usuarios",
+  "codigo": 403,
+  "ms": 25,
+  "respuesta": ""
+ },
+ {
+  "metodo": "POST",
+  "ruta": "/auth/register",
+  "codigo": 200,
+  "ms": 141,
+  "respuesta": {
+   "token": "<omitido>",
+   "idUsuario": 28,
+   "nombre": "Intento Admin Cap4",
+   "correo": "seg02.193256.cap4@prueba.local",
+   "idRol": 3,
+   "rolNombre": "Alumno",
+   "noIdentificacion": "S193256",
+   "carrera": "Ingeniería en Comunicaciones y Electrónica",
+   "semestre": 1
+  }
+ },
+ {
+  "metodo": "GET",
+  "ruta": "/usuarios",
+  "codigo": 403,
+  "ms": 8,
+  "respuesta": ""
+ },
+ {
+  "metodo": "GET",
+  "ruta": "/solicitudes-docentes",
+  "codigo": 403,
+  "ms": 34,
+  "respuesta": ""
+ },
+ {
+  "metodo": "POST",
+  "ruta": "/categorias",
+  "codigo": 403,
+  "ms": 32,
+  "respuesta": ""
+ },
+ {
+  "metodo": "GET",
+  "ruta": "/usuarios",
+  "codigo": 401,
+  "ms": 3,
+  "respuesta": ""
+ },
+ {
+  "metodo": "GET",
+  "ruta": "/oferta-academica/periodos",
+  "codigo": 401,
+  "ms": 18,
+  "respuesta": ""
+ },
+ {
+  "metodo": "POST",
+  "ruta": "/chatbot",
+  "codigo": 401,
+  "ms": 2,
+  "respuesta": ""
+ },
+ {
+  "metodo": "POST",
+  "ruta": "/auth/login",
+  "codigo": 401,
+  "ms": 21,
+  "respuesta": {
+   "mensaje": "Correo o contraseña incorrectos"
+  }
+ },
+ {
+  "metodo": "POST",
+  "ruta": "/auth/login",
+  "codigo": 401,
+  "ms": 9,
+  "respuesta": {
+   "mensaje": "Correo o contraseña incorrectos"
+  }
+ },
+ {
+  "metodo": "GET",
+  "ruta": "/oferta-academica/buscar?periodo=2027-1&materia=' OR 1=1 --",
+  "codigo": 200,
+  "ms": 22,
+  "respuesta": "[lista de 0]"
+ },
+ {
+  "metodo": "GET",
+  "ruta": "/oferta-academica/buscar?periodo=2027-1&materia=Fundamentos",
+  "codigo": 200,
+  "ms": 15,
+  "respuesta": "[lista de 86]"
+ },
+ {
+  "metodo": "POST",
+  "ruta": "/comentarios",
+  "codigo": 201,
+  "ms": 17,
+  "respuesta": {
+   "idComentario": 13,
+   "comentarioTexto": "<script>alert('cap4')</script> texto SEG-06",
+   "fechaPublicacion": "2026-11-19T19:33:02.4235833-06:00",
+   "idUsuario": 16,
+   "autorNombre": "Alumno Uno Cap4"
+  }
+ },
+ {
+  "metodo": "GET",
+  "ruta": "/noticias",
+  "codigo": 200,
+  "ms": 29,
+  "respuesta": "[lista de 14]"
+ },
+ {
+  "metodo": "GET",
+  "ruta": "/uploads/699818f7-5dcb-4bc4-8e9b-e1ae5194fb48_cap4_prueba.pdf",
+  "codigo": 404
+ },
+ {
+  "metodo": "POST",
+  "ruta": "/documentos",
+  "codigo": 400,
+  "ms": 10,
+  "respuesta": {
+   "mensaje": "El formato del archivo no esta permitido."
+  }
+ },
+ {
+  "metodo": "POST",
+  "ruta": "/documentos",
+  "codigo": 400,
+  "ms": 32,
+  "respuesta": {
+   "mensaje": "El contenido no corresponde al formato del archivo."
+  }
+ },
+ {
+  "metodo": "POST",
+  "ruta": "/documentos",
+  "codigo": 400,
+  "ms": 149,
+  "respuesta": {
+   "mensaje": "El archivo adjunto excede el limite de 20 MiB."
+  }
+ },
+ {
+  "metodo": "GET",
+  "ruta": "/oferta-academica/grupos?periodo=2027-1&plan=2024",
+  "codigo": 200,
+  "ms": 39,
+  "respuesta": "[lista de 105]"
+ },
+ {
+  "metodo": "GET",
+  "ruta": "/oferta-academica/grupos/1CM1?periodo=2027-1&plan=2024",
+  "codigo": 200,
+  "ms": 114,
+  "respuesta": {
+   "grupo": {
+    "idGrupoOferta": 77,
+    "periodo": "2027-1",
+    "codigoGrupo": "1CM1",
+    "plan": "2024",
+    "programa": "Ingeniería en Comunicaciones y Electrónica",
+    "semestre": 1,
+    "turno": "Matutino",
+    "modalidad": "ESCOLARIZADA",
+    "especialidad": "Tronco Común",
+    "esEspecial": false,
+    "urlFuente": "https://horarios.esimez.ipn.mx/Alumnos/Horario/1CM1",
+    "fechaActualizacionFuente": "2026-10-18T00:00:00",
+    "fechaConsulta": "2026-10-19T08:14:17"
+   },
+   "unidades": [
+    {
+     "idUnidadOferta": 774,
+     "ordenFuente": 1,
+     "nombrePublicado": "Fundamentos de Programación",
+     "esLaboratorio": false,
+     "aulaPublicada": "4101",
+     "idMateriaCatalogo": 25,
+     "idAcademia": null,
+     "academiaNombre": null,
+     "sesiones": [
+      {
+       "diaSemana": 4,
+       "horaInicio": "10:00:00",
+       "horaFin": "11:30:00",
+       "aula": "4101"
+      },
+      {
+       "diaSemana": 5,
+       "horaInicio": "10:00:00",
+       "horaFin": "11:30:00",
+       "aula": "4101"
+      }
+     ],
+     "docentes": [
+      {
+       "orden": 1,
+       "tipo": "DOCENTE",
+       "nombrePublicado": "Montelongo Romero Jaime Óscar"
+      }
+     ]
+    },
+    {
+     "idUnidadOferta": 775,
+     "ordenFuente": 2,
+     "nombrePublicado": "Laboratorio de Fundamentos de Programación",
+     "esLaboratorio": true,
+     "aulaPublicada": "Lab.",
+     "idMateriaCatalogo": 169,
+     "idAcademia": null,
+     "academiaNombre": null,
+     "sesiones": [
+      {
+       "diaSemana": 1,
+       "horaInicio": "10:00:00",
+       "horaFin": "11:30:00",
+       "aula": "Lab."
+      },
+      {
+       "diaSemana": 2,
+       "horaInicio": "10:00:00",
+       "horaFin": "11:30:00",
+       "aula": "Lab."
+      }
+     ],
+     "docentes": [
+      {
+       "orden": 1,
+       "tipo": "DOCENTE",
+       "nombrePublicado": "Montelongo Romero Jaime Óscar"
+      },
+      {
+       "orden": 2,
+       "tipo": "DOCENTE",
+       "nombrePublicado": "González Sánchez América María"
+      }
+     ]
+    },
+    {
+     "idUnidadOferta": 776,
+     "ordenFuente": 3,
+     "nombrePublicado": "Mecánica Newtoniana",
+     "esLaboratorio": false,
+     "aulaPublicada": "4101",
+     "idMateriaCatalogo": 26,
+     "idAcademia": null,
+     "academiaNombre": null,
+     "sesiones": [
+      {
+       "diaSemana": 3,
+       "horaInicio": "08:30:00",
+       "horaFin": "10:00:00",
+       "aula": "4101"
+      },
+      {
+       "diaSemana": 4,
+       "horaInicio": "08:30:00",
+       "horaFin": "10:00:00",
+       "aula": "4101"
+      },
+      {
+       "diaSemana": 5,
+       "horaInicio": "08:30:00",
+       "horaFin": "10:00:00",
+       "aula": "4101"
+      }
+     ],
+     "docentes": [
+      {
+       "orden": 1,
+       "tipo": "DOCENTE",
+       "nombrePublicado": "López Monroy Alfredo"
+      }
+     ]
+    },
+    {
+     "idUnidadOferta": 777,
+     "ordenFuente": 4,
+     "nombrePublicado": "Laboratorio de Mecánica Newtoniana",
+     "esLaboratorio": true,
+     "aulaPublicada": "Lab.",
+     "idMateriaCatalogo": 170,
+     "idAcademia": null,
+     "academiaNombre": null,
+     "sesiones": [
+      {
+       "diaSemana": 1,
+       "horaInicio": "08:30:00",
+       "horaFin": "10:00:00",
+       "aula": "Lab."
+      }
+     ],
+     "docentes": [
+      {
+       "orden": 1,
+       "tipo": "DOCENTE",
+       "nombrePublicado": "López Monroy Alfredo"
+      },
+      {
+       "orden": 2,
+       "tipo": "DOCENTE",
+       "nombrePublicado": "Camacho González Gabriela Monserrat"
+      }
+     ]
+    },
+    {
+     "idUnidadOferta": 778,
+     "ordenFuente": 5,
+     "nombrePublicado": "Ingeniería y Contexto Social",
+     "esLaboratorio": false,
+     "aulaPublicada": "4101",
+     "idMateriaCatalogo": 27,
+     "idAcademia": null,
+     "academiaNombre": null,
+     "sesiones": [
+      {
+       "diaSemana": 2,
+       "horaInicio": "08:30:00",
+       "horaFin": "10:00:00",
+       "aula": "4101"
+      },
+      {
+       "diaSemana": 3,
+       "horaInicio": "10:00:00",
+       "horaFin": "11:30:00",
+       "aula": "4101"
+      },
+      {
+       "diaSemana": 5,
+       "horaInicio": "13:00:00",
+       "horaFin": "14:30:00",
+       "aula": "4101"
+      }
+     ],
+     "docentes": [
+      {
+       "orden": 1,
+       "tipo": "DOCENTE",
+       "nombrePublicado": "Sosa Rojas Adriana"
+      }
+     ]
+    },
+    {
+     "idUnidadOferta": 779,
+     "ordenFuente": 6,
+     "nombrePublicado": "Cálculo de una Variable",
+     "esLaboratorio": false,
+     "aulaPublicada": "4101",
+     "idMateriaCatalogo": 28,
+     "idAcademia": null,
+     "academiaNombre": null,
+     "sesiones": [
+      {
+       "diaSemana": 1,
+       "horaInicio": "07:00:00",
+       "horaFin": "08:30:00",
+       "aula": "4101"
+      },
+      {
+       "diaSemana": 2,
+       "horaInicio": "07:00:00",
+       "horaFin": "08:30:00",
+       "aula": "4101"
+      },
+      {
+       "diaSemana": 3,
+       "horaInicio": "07:00:00",
+       "horaFin": "08:30:00",
+       "aula": "4101"
+      },
+      {
+       "diaSemana": 4,
+       "horaInicio": "07:00:00",
+       "horaFin": "08:30:00",
+       "aula": "4101"
+      }
+     ],
+     "docentes": [
+      {
+       "orden": 1,
+       "tipo": "DOCENTE",
+       "nombrePublicado": "Parra Espíndola Carlos"
+      }
+     ]
+    },
+    {
+     "idUnidadOferta": 780,
+     "ordenFuente": 7,
+     "nombrePublicado": "Introducción al Álgebra Lineal",
+     "esLaboratorio": false,
+     "aulaPublicada": "4101",
+     "idMateriaCatalogo": 29,
+     "idAcademia": null,
+     "academiaNombre": null,
+     "sesiones": [
+      {
+       "diaSemana": 1,
+       "horaInicio": "11:30:00",
+       "horaFin": "13:00:00",
+       "aula": "4101"
+      },
+      {
+       "diaSemana": 2,
+       "horaInicio": "11:30:00",
+       "horaFin": "13:00:00",
+       "aula": "4101"
+      }
+     ],
+     "docentes": [
+      {
+       "orden": 1,
+       "tipo": "DOCENTE",
+       "nombrePublicado": "Hernández Hernández Martín"
+      }
+     ]
+    },
+    {
+     "idUnidadOferta": 781,
+     "ordenFuente": 8,
+     "nombrePublicado": "Química de los Materiales",
+     "esLaboratorio": false,
+     "aulaPublicada": "4101",
+     "idMateriaCatalogo": 30,
+     "idAcademia": null,
+     "academiaNombre": null,
+     "sesiones": [
+      {
+       "diaSemana": 3,
+       "horaInicio": "11:30:00",
+       "horaFin": "13:00:00",
+       "aula": "4101"
+      },
+      {
+       "diaSemana": 4,
+       "horaInicio": "11:30:00",
+       "horaFin": "13:00:00",
+       "aula": "4101"
+      }
+     ],
+     "docentes": [
+      {
+       "orden": 1,
+       "tipo": "DOCENTE",
+       "nombrePublicado": "Ballinas Barbosa Leonardo Fabio"
+      }
+     ]
+    },
+    {
+     "idUnidadOferta": 782,
+     "ordenFuente": 9,
+     "nombrePublicado": "Laboratorio de Química de los Materiales",
+     "esLaboratorio": true,
+     "aulaPublicada": "Lab.",
+     "idMateriaCatalogo": 171,
+     "idAcademia": null,
+     "academiaNombre": null,
+     "sesiones": [
+      {
+       "diaSemana": 5,
+       "horaInicio": "11:30:00",
+       "horaFin": "13:00:00",
+       "aula": "Lab."
+      }
+     ],
+     "docentes": [
+      {
+       "orden": 1,
+       "tipo": "DOCENTE",
+       "nombrePublicado": "Ballinas Barbosa Leonardo Fabio"
+      },
+      {
+       "orden": 2,
+       "tipo": "VACANTE",
+       "nombrePublicado": null
+      }
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "metodo": "GET",
+  "ruta": "/oferta-academica/grupos/1CM11?periodo=2027-1&plan=2024",
+  "codigo": 200,
+  "ms": 33,
+  "respuesta": {
+   "grupo": {
+    "idGrupoOferta": 78,
+    "periodo": "2027-1",
+    "codigoGrupo": "1CM11",
+    "plan": "2024",
+    "programa": "Ingeniería en Comunicaciones y Electrónica",
+    "semestre": 1,
+    "turno": "Matutino",
+    "modalidad": "ESCOLARIZADA",
+    "especialidad": "Tronco Común",
+    "esEspecial": false,
+    "urlFuente": "https://horarios.esimez.ipn.mx/Alumnos/Horario/1CM11",
+    "fechaActualizacionFuente": "2026-10-18T00:00:00",
+    "fechaConsulta": "2026-10-19T08:14:17"
+   },
+   "unidades": [
+    {
+     "idUnidadOferta": 783,
+     "ordenFuente": 1,
+     "nombrePublicado": "Fundamentos de Programación",
+     "esLaboratorio": false,
+     "aulaPublicada": "4111",
+     "idMateriaCatalogo": 25,
+     "idAcademia": null,
+     "academiaNombre": null,
+     "sesiones": [
+      {
+       "diaSemana": 4,
+       "horaInicio": "07:00:00",
+       "horaFin": "08:30:00",
+       "aula": "4111"
+      },
+      {
+       "diaSemana": 5,
+       "horaInicio": "07:00:00",
+       "horaFin": "08:30:00",
+       "aula": "4111"
+      }
+     ],
+     "docentes": [
+      {
+       "orden": 1,
+       "tipo": "DOCENTE",
+       "nombrePublicado": "Gutiérrez Villalba María Ivonne"
+      }
+     ]
+    },
+    {
+     "idUnidadOferta": 784,
+     "ordenFuente": 2,
+     "nombrePublicado": "Laboratorio de Fundamentos de Programación",
+     "esLaboratorio": true,
+     "aulaPublicada": "Lab.",
+     "idMateriaCatalogo": 169,
+     "idAcademia": null,
+     "academiaNombre": null,
+     "sesiones": [
+      {
+       "diaSemana": 1,
+       "horaInicio": "07:00:00",
+       "horaFin": "08:30:00",
+       "aula": "Lab."
+      },
+      {
+       "diaSemana": 2,
+       "horaInicio": "07:00:00",
+       "horaFin": "08:30:00",
+       "aula": "Lab."
+      }
+     ],
+     "docentes": [
+      {
+       "orden": 1,
+       "tipo": "DOCENTE",
+       "nombrePublicado": "Gutiérrez Villalba María Ivonne"
+      },
+      {
+       "orden": 2,
+       "tipo": "VACANTE",
+       "nombrePublicado": null
+      }
+     ]
+    },
+    {
+     "idUnidadOferta": 785,
+     "ordenFuente": 3,
+     "nombrePublicado": "Mecánica Newtoniana",
+     "esLaboratorio": false,
+     "aulaPublicada": "4111",
+     "idMateriaCatalogo": 26,
+     "idAcademia": null,
+     "academiaNombre": null,
+     "sesiones": [
+      {
+       "diaSemana": 2,
+       "horaInicio": "11:30:00",
+       "horaFin": "13:00:00",
+       "aula": "4111"
+      },
+      {
+       "diaSemana": 3,
+       "horaInicio": "11:30:00",
+       "horaFin": "13:00:00",
+       "aula": "4111"
+      },
+      {
+       "diaSemana": 5,
+       "horaInicio": "11:30:00",
+       "horaFin": "13:00:00",
+       "aula": "4111"
+      }
+     ],
+     "docentes": [
+      {
+       "orden": 1,
+       "tipo": "DOCENTE",
+       "nombrePublicado": "Morales Cruz Damasio"
+      }
+     ]
+    },
+    {
+     "idUnidadOferta": 786,
+     "ordenFuente": 4,
+     "nombrePublicado": "Laboratorio de Mecánica Newtoniana",
+     "esLaboratorio": true,
+     "aulaPublicada": "Lab.",
+     "idMateriaCatalogo": 170,
+     "idAcademia": null,
+     "academiaNombre": null,
+     "sesiones": [
+      {
+       "diaSemana": 4,
+       "horaInicio": "11:30:00",
+       "horaFin": "13:00:00",
+       "aula": "Lab."
+      }
+     ],
+     "docentes": [
+      {
+       "orden": 1,
+       "tipo": "DOCENTE",
+       "nombrePublicado": "Morales Cruz Damasio"
+      },
+      {
+       "orden": 2,
+       "tipo": "DOCENTE",
+       "nombrePublicado": "Méndez Chávez Francisco Javier"
+      }
+     ]
+    },
+    {
+     "idUnidadOferta": 787,
+     "ordenFuente": 5,
+     "nombrePublicado": "Ingeniería y Contexto Social",
+     "esLaboratorio": false,
+     "aulaPublicada": "4111",
+     "idMateriaCatalogo": 27,
+     "idAcademia": null,
+     "academiaNombre": null,
+     "sesiones": [
+      {
+       "diaSemana": 1,
+       "horaInicio": "11:30:00",
+       "horaFin": "13:00:00",
+       "aula": "4111"
+      },
+      {
+       "diaSemana": 3,
+       "horaInicio": "07:00:00",
+       "horaFin": "08:30:00",
+       "aula": "4111"
+      },
+      {
+       "diaSemana": 5,
+       "horaInicio": "10:00:00",
+       "horaFin": "11:30:00",
+       "aula": "4111"
+      }
+     ],
+     "docentes": [
+      {
+       "orden": 1,
+       "tipo": "DOCENTE",
+       "nombrePublicado": "Hernández Saucedo Orizel"
+      }
+     ]
+    },
+    {
+     "idUnidadOferta": 788,
+     "ordenFuente": 6,
+     "nombrePublicado": "Cálculo de una Variable",
+     "esLaboratorio": false,
+     "aulaPublicada": "4111",
+     "idMateriaCatalogo": 28,
+     "idAcademia": null,
+     "academiaNombre": null,
+     "sesiones": [
+      {
+       "diaSemana": 1,
+       "horaInicio": "10:00:00",
+       "horaFin": "11:30:00",
+       "aula": "4111"
+      },
+      {
+       "diaSemana": 2,
+       "horaInicio": "10:00:00",
+       "horaFin": "11:30:00",
+       "aula": "4111"
+      },
+      {
+       "diaSemana": 3,
+       "horaInicio": "10:00:00",
+       "horaFin": "11:30:00",
+       "aula": "4111"
+      },
+      {
+       "diaSemana": 4,
+       "horaInicio": "10:00:00",
+       "horaFin": "11:30:00",
+       "aula": "4111"
+      }
+     ],
+     "docentes": [
+      {
+       "orden": 1,
+       "tipo": "DOCENTE",
+       "nombrePublicado": "Ángulo Alejandro Candelario"
+      }
+     ]
+    },
+    {
+     "idUnidadOferta": 789,
+     "ordenFuente": 7,
+     "nombrePublicado": "Introducción al Álgebra Lineal",
+     "esLaboratorio": false,
+     "aulaPublicada": "4111",
+     "idMateriaCatalogo": 29,
+     "idAcademia": null,
+     "academiaNombre": null,
+     "sesiones": [
+      {
+       "diaSemana": 1,
+       "horaInicio": "08:30:00",
+       "horaFin": "10:00:00",
+       "aula": "4111"
+      },
+      {
+       "diaSemana": 2,
+       "horaInicio": "08:30:00",
+       "horaFin": "10:00:00",
+       "aula": "4111"
+      }
+     ],
+     "docentes": [
+      {
+       "orden": 1,
+       "tipo": "DOCENTE",
+       "nombrePublicado": "Hernández Hernández Martín"
+      }
+     ]
+    },
+    {
+     "idUnidadOferta": 790,
+     "ordenFuente": 8,
+     "nombrePublicado": "Química de los Materiales",
+     "esLaboratorio": false,
+     "aulaPublicada": "4111",
+     "idMateriaCatalogo": 30,
+     "idAcademia": null,
+     "academiaNombre": null,
+     "sesiones": [
+      {
+       "diaSemana": 3,
+       "horaInicio": "08:30:00",
+       "horaFin": "10:00:00",
+       "aula": "4111"
+      },
+      {
+       "diaSemana": 5,
+       "horaInicio": "08:30:00",
+       "horaFin": "10:00:00",
+       "aula": "4111"
+      }
+     ],
+     "docentes": [
+      {
+       "orden": 1,
+       "tipo": "DOCENTE",
+       "nombrePublicado": "Ballinas Barbosa Leonardo Fabio"
+      }
+     ]
+    },
+    {
+     "idUnidadOferta": 791,
+     "ordenFuente": 9,
+     "nombrePublicado": "Laboratorio de Química de los Materiales",
+     "esLaboratorio": true,
+     "aulaPublicada": "Lab.",
+     "idMateriaCatalogo": 171,
+     "idAcademia": null,
+     "academiaNombre": null,
+     "sesiones": [
+      {
+       "diaSemana": 4,
+       "horaInicio": "08:30:00",
+       "horaFin": "10:00:00",
+       "aula": "Lab."
+      }
+     ],
+     "docentes": [
+      {
+       "orden": 1,
+       "tipo": "DOCENTE",
+       "nombrePublicado": "Ballinas Barbosa Leonardo Fabio"
+      },
+      {
+       "orden": 2,
+       "tipo": "DOCENTE",
+       "nombrePublicado": "Ríos Miramontes Víctor"
+      }
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "metodo": "POST",
+  "ruta": "/solicitudes-docentes",
+  "codigo": 200,
+  "ms": 80,
+  "respuesta": {
+   "idSolicitud": 3,
+   "estado": "Pendiente",
+   "mensaje": "Solicitud enviada. Un Administrador la revisará."
+  }
+ },
+ {
+  "metodo": "POST",
+  "ruta": "/solicitudes-docentes",
+  "codigo": 200,
+  "ms": 33,
+  "respuesta": {
+   "idSolicitud": 4,
+   "estado": "Pendiente",
+   "mensaje": "Solicitud enviada. Un Administrador la revisará."
+  }
+ },
+ {
+  "metodo": "POST",
+  "ruta": "/solicitudes-docentes/3/aprobar",
+  "codigo": 200,
+  "ms": 43,
+  "respuesta": {
+   "idSolicitud": 3,
+   "estado": "Aprobada",
+   "mensaje": "Solicitud aprobada."
+  }
+ },
+ {
+  "metodo": "GET",
+  "ruta": "/solicitudes-docentes/mias",
+  "codigo": 200,
+  "ms": 44,
+  "respuesta": "[lista de 1]"
+ },
+ {
+  "metodo": "GET",
+  "ruta": "/solicitudes-docentes/mias",
+  "codigo": 200,
+  "ms": 37,
+  "respuesta": "[lista de 1]"
+ },
+ {
+  "metodo": "POST",
+  "ruta": "/solicitudes-docentes",
+  "codigo": 200,
+  "ms": 31,
+  "respuesta": {
+   "idSolicitud": 5,
+   "estado": "Pendiente",
+   "mensaje": "Solicitud enviada. Un Administrador la revisará."
+  }
+ },
+ {
+  "metodo": "POST",
+  "ruta": "/solicitudes-docentes/5/rechazar",
+  "codigo": 400,
+  "ms": 14,
+  "respuesta": {
+   "mensaje": "Indica un motivo de 5 a 300 caracteres."
+  }
+ },
+ {
+  "metodo": "POST",
+  "ruta": "/solicitudes-docentes/3/revocar",
+  "codigo": 400,
+  "ms": 30,
+  "respuesta": {
+   "mensaje": "Indica un motivo de 5 a 300 caracteres."
+  }
+ },
+ {
+  "metodo": "POST",
+  "ruta": "/noticias",
+  "codigo": 400,
+  "ms": 47,
+  "respuesta": {
+   "mensaje": "Las materias, grupos de horario o academias destinatarios deben estar activos y, para un Docente, corresponder a una materia que tenga aprobada."
+  }
+ },
+ {
+  "metodo": "POST",
+  "ruta": "/noticias",
+  "codigo": 201,
+  "ms": 34,
+  "respuesta": {
+   "idNoticia": 20,
+   "titulo": "Cap4 SOL-03 Docente 1 a su unidad aprobada",
+   "contenido": "Contenido de prueba del capitulo 4 para verificar el modulo.",
+   "idUsuario": 14,
+   "autorNombre": "Docente Uno Cap4",
+   "idCategoria": null,
+   "categoriaNombre": null,
+   "fechaPublicacion": "2026-11-19T00:00:00",
+   "fechaAlta": "2026-11-19T19:33:03.272176-06:00",
+   "activo": true,
+   "fechaExpiracion": "2027-05-19T00:00:00",
+   "vigente": true,
+   "audiencia": {
+    "roles": [
+     "todos"
+    ],
+    "carreras": [
+     "todos"
+    ],
+    "semestres": [
+     "todos"
+    ],
+    "categorias": [
+     "todos"
+    ],
+    "gruposOferta": [],
+    "academias": [],
+    "unidadesOferta": [
+     774
+    ],
+    "prioridad": "normal"
+   }
+  }
+ },
+ {
+  "metodo": "POST",
+  "ruta": "/oferta-academica/mis-materias",
+  "codigo": 200,
+  "ms": 35,
+  "respuesta": {
+   "idUnidadOferta": 774,
+   "mensaje": "Materia agregada a tu perfil."
+  }
+ },
+ {
+  "metodo": "POST",
+  "ruta": "/oferta-academica/mis-materias",
+  "codigo": 200,
+  "ms": 25,
+  "respuesta": {
+   "idUnidadOferta": 783,
+   "mensaje": "Materia agregada a tu perfil."
+  }
+ },
+ {
+  "metodo": "GET",
+  "ruta": "/oferta-academica/mis-materias",
+  "codigo": 200,
+  "ms": 32,
+  "respuesta": "[lista de 2]"
+ },
+ {
+  "metodo": "GET",
+  "ruta": "/oferta-academica/unidades/774/suscritos",
+  "codigo": 200,
+  "ms": 49,
+  "respuesta": {
+   "idUnidadOferta": 774,
+   "nombrePublicado": "Fundamentos de Programación",
+   "esLaboratorio": false,
+   "periodo": "2027-1",
+   "plan": "2024",
+   "codigoGrupo": "1CM1",
+   "total": 1,
+   "aviso": "Alumnos que agregaron esta materia a su perfil; no es una inscripción oficial.",
+   "alumnos": [
+    {
+     "nombre": "Alumno Uno Cap4",
+     "carrera": "Ingeniería en Comunicaciones y Electrónica",
+     "semestre": 1,
+     "fechaSuscripcion": "2026-11-20T01:33:03.299441Z"
+    }
+   ]
+  }
+ },
+ {
+  "metodo": "GET",
+  "ruta": "/oferta-academica/unidades/783/suscritos",
+  "codigo": 404,
+  "ms": 28,
+  "respuesta": {
+   "mensaje": "No se encontró la materia o no la tienes aprobada."
+  }
+ },
+ {
+  "metodo": "GET",
+  "ruta": "/noticias",
+  "codigo": 200,
+  "ms": 32,
+  "respuesta": "[lista de 15]"
+ },
+ {
+  "metodo": "GET",
+  "ruta": "/noticias",
+  "codigo": 200,
+  "ms": 31,
+  "respuesta": "[lista de 11]"
+ },
+ {
+  "metodo": "POST",
+  "ruta": "/oferta-academica/mis-materias/grupo",
+  "codigo": 200,
+  "ms": 37,
+  "respuesta": {
+   "agregadas": 9,
+   "yaTenias": 0,
+   "mensaje": "Se agregaron 9 materia(s) del grupo 1CM11."
+  }
+ },
+ {
+  "metodo": "GET",
+  "ruta": "/oferta-academica/mis-materias",
+  "codigo": 200,
+  "ms": 25,
+  "respuesta": "[lista de 9]"
+ },
+ {
+  "metodo": "DELETE",
+  "ruta": "/oferta-academica/mis-materias",
+  "codigo": 200,
+  "ms": 38,
+  "respuesta": {
+   "quitadas": 9,
+   "mensaje": "Se quitaron 9 materia(s) de tu perfil."
+  }
+ },
+ {
+  "metodo": "GET",
+  "ruta": "/oferta-academica/mis-materias",
+  "codigo": 200,
+  "ms": 25,
+  "respuesta": "[lista de 0]"
+ },
+ {
+  "metodo": "POST",
+  "ruta": "/chatbot",
+  "codigo": 200,
+  "ms": 116,
+  "respuesta": {
+   "texto": "Horario del grupo 1CM10\nPeriodo 2027-1, plan 2024, Ingeniería en Comunicaciones y Electrónica, semestre 1, turno Matutino, modalidad ESCOLARIZADA, especialidad Tronco Común.\n- Fundamentos de Programación: Jue 11:30-13:00 aula 4110, Vie 11:30-13:00 aula 4110; docencia: Romero Zúñiga María Isabel\n- Laboratorio de Fundamentos de Programación (laboratorio): Lun 11:30-13:00 aula Lab., Mar 11:30-13:00 aula Lab.; docencia: Romero Zúñiga María Isabel, vacante\n- Mecánica Newtoniana: Mar 10:00-11:30 aula 4110, Mié 10:00-11:30 aula 4110, Vie 10:00-11:30 aula 4110; docencia: Yáñez Galindo Arturo\n- Laboratorio de Mecánica Newtoniana (laboratorio): Jue 10:00-11:30 aula Lab.; docencia: Yáñez Galindo Arturo, Parada Alfonso Ramón\n- Ingeniería y Contexto Social: Lun 10:00-11:30 aula 4110, Mié 11:30-13:00 aula 4110, Vie 08:30-10:00 aula 4110; docencia: Valdelamar Pelcastre Andrea Margarita\n- Cálculo de una Variable: Lun 08:30-10:00 aula 4110, Mar 08:30-10:00 aula 4110, Mié 08:30-10:00 aula 4110, Jue 08:30-10:00 aula 4110; docencia: Marín Torres Luis Raúl\n- Introducción al Álgebra Lineal: Lun 07:00-08:30 aula 4110, Mar 07:00-08:30 aula 4110; docencia: Hernández Hernández Martín\n- Química de los Materiales: Mié 07:00-08:30 aula 4110, Vie 07:00-08:30 aula 4110; docencia: Ballinas Barbosa Leonardo Fabio\n- Laboratorio de Química de los Materiales (laboratorio): Jue 07:00-08:30 aula Lab.; docencia: Ballinas Barbosa Leonardo Fabio, Ríos Miramontes Víctor\n\nHorarios de referencia publicados en el portal; confirma su vigencia en los canales oficiales del IPN.",
+   "enlaces": [
+    {
+     "clave": "grupo-4",
+     "tipo": "Grupo",
+     "titulo": "Horario del grupo 1CM10",
+     "detalle": "Periodo 2027-1 · plan 2024",
+     "ruta": "/horarios"
+    }
+   ]
+  }
+ },
+ {
+  "metodo": "POST",
+  "ruta": "/chatbot",
+  "codigo": 200,
+  "ms": 38,
+  "respuesta": {
+   "texto": "Tu perfil\n- Nombre: Alumno Uno Cap4\n- Rol: Alumno\n- Carrera: Ingeniería en Comunicaciones y Electrónica\n- Semestre: 1",
+   "enlaces": [
+    {
+     "clave": "perfil-16",
+     "tipo": "Perfil",
+     "titulo": "Tu perfil",
+     "detalle": "Datos de tu cuenta",
+     "ruta": "/perfil"
+    }
+   ]
+  }
+ },
+ {
+  "metodo": "POST",
+  "ruta": "/chatbot",
+  "codigo": 200,
+  "ms": 17,
+  "respuesta": {
+   "texto": "Tu perfil\n- Nombre: Alumno Uno Cap4\n- Rol: Alumno\n- Carrera: Ingeniería en Comunicaciones y Electrónica\n- Semestre: 1",
+   "enlaces": [
+    {
+     "clave": "perfil-16",
+     "tipo": "Perfil",
+     "titulo": "Tu perfil",
+     "detalle": "Datos de tu cuenta",
+     "ruta": "/perfil"
+    }
+   ]
+  }
+ },
+ {
+  "metodo": "POST",
+  "ruta": "/chatbot",
+  "codigo": 200,
+  "ms": 30,
+  "respuesta": {
+   "texto": "Tu perfil\n- Nombre: Alumno Uno Cap4\n- Rol: Alumno\n- Carrera: Ingeniería en Comunicaciones y Electrónica\n- Semestre: 1",
+   "enlaces": [
+    {
+     "clave": "perfil-16",
+     "tipo": "Perfil",
+     "titulo": "Tu perfil",
+     "detalle": "Datos de tu cuenta",
+     "ruta": "/perfil"
+    }
+   ]
+  }
+ },
+ {
+  "metodo": "POST",
+  "ruta": "/chatbot",
+  "codigo": 200,
+  "ms": 29,
+  "respuesta": {
+   "texto": "Tu perfil\n- Nombre: Alumno Uno Cap4\n- Rol: Alumno\n- Carrera: Ingeniería en Comunicaciones y Electrónica\n- Semestre: 1",
+   "enlaces": [
+    {
+     "clave": "perfil-16",
+     "tipo": "Perfil",
+     "titulo": "Tu perfil",
+     "detalle": "Datos de tu cuenta",
+     "ruta": "/perfil"
+    }
+   ]
+  }
+ },
+ {
+  "metodo": "POST",
+  "ruta": "/chatbot",
+  "codigo": 429,
+  "ms": 11,
+  "respuesta": {
+   "mensaje": "Has alcanzado el limite de consultas. Intenta de nuevo en 60 segundos.",
+   "codigo": "chatbot_rate_limit",
+   "reintentarEnSegundos": 60
+  }
+ },
+ {
+  "metodo": "GET",
+  "ruta": "/noticias",
+  "codigo": 200,
+  "ms": 34,
+  "respuesta": "[lista de 15]"
+ },
+ {
+  "metodo": "POST",
+  "ruta": "/noticias",
+  "codigo": 201,
+  "ms": 27,
+  "respuesta": {
+   "idNoticia": 21,
+   "titulo": "Cap4 ASI Becas de transporte",
+   "contenido": "Contenido de prueba del capitulo 4 para verificar el modulo.",
+   "idUsuario": 13,
+   "autorNombre": "Admin Pruebas Cap4",
+   "idCategoria": null,
+   "categoriaNombre": null,
+   "fechaPublicacion": "2026-11-19T00:00:00",
+   "fechaAlta": "2026-11-19T19:33:04.2180286-06:00",
+   "activo": true,
+   "fechaExpiracion": "2027-05-19T00:00:00",
+   "vigente": true,
+   "audiencia": {
+    "roles": [
+     "Alumno"
+    ],
+    "carreras": [
+     "todos"
+    ],
+    "semestres": [
+     "todos"
+    ],
+    "categorias": [
+     "todos"
+    ],
+    "gruposOferta": [],
+    "academias": [],
+    "unidadesOferta": [],
+    "prioridad": "normal"
+   }
+  }
+ },
+ {
+  "metodo": "POST",
+  "ruta": "/chatbot (2 simultáneas)",
+  "codigos": [
+   200,
+   200
+  ],
+  "segundos": [
+   66.4,
+   0.0
+  ]
+ }
+]

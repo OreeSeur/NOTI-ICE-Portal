@@ -1,0 +1,834 @@
+{
+ "fecha": "2026-11-19T19:35:14",
+ "resultados": [
+  {
+   "clave": "AUT-01",
+   "caso": "Registro de un alumno con datos válidos",
+   "esperado": "Cuenta con rol Alumno y puede iniciar sesión",
+   "obtenido": "registro 200, rol Alumno; login 200",
+   "ok": true,
+   "nota": "",
+   "original": true
+  },
+  {
+   "clave": "AUT-02",
+   "caso": "Registro con un correo ya registrado",
+   "esperado": "Se rechaza con mensaje de error",
+   "obtenido": "400: Ya existe un usuario con ese correo",
+   "ok": true,
+   "nota": "",
+   "original": true
+  },
+  {
+   "clave": "AUT-03",
+   "caso": "Inicio de sesión con credenciales correctas",
+   "esperado": "Se genera un token JWT",
+   "obtenido": "200, token JWT de 3 partes",
+   "ok": true,
+   "nota": "La redirección al panel se comprueba en la prueba de pantalla",
+   "pantalla": "En pantalla, tras iniciar sesión se redirige al inicio «/» (captura: AUT-03_INT-04_inicio_alumno.jpg)",
+   "original": true
+  },
+  {
+   "clave": "AUT-04",
+   "caso": "Inicio de sesión con contraseña incorrecta",
+   "esperado": "Acceso negado con mensaje genérico",
+   "obtenido": "401 «Correo o contraseña incorrectos»; correo inexistente: 401 «Correo o contraseña incorrectos»",
+   "ok": true,
+   "nota": "",
+   "original": true
+  },
+  {
+   "clave": "AUT-05",
+   "caso": "Acceso a una ruta protegida sin sesión",
+   "esperado": "Se redirige al inicio de sesión",
+   "obtenido": "/perfil sin sesión redirige a /login",
+   "ok": true,
+   "nota": "Prueba de pantalla (captura AUT-05_ruta_protegida_sin_sesion.jpg)",
+   "original": true
+  },
+  {
+   "clave": "AUT-06",
+   "caso": "Uso de un token vencido o alterado",
+   "esperado": "La API responde 401",
+   "obtenido": "alterado 401; vencido (firmado, exp hace 1 h) 401",
+   "ok": true,
+   "nota": "El cierre de sesión del frontend se comprueba en pantalla",
+   "pantalla": "En pantalla, con el token alterado en sessionStorage, al abrir /perfil se borra la sesión y se redirige a /login (captura: AUT-06_token_alterado_cierra_sesion.jpg)",
+   "original": true
+  },
+  {
+   "clave": "AUT-07",
+   "caso": "Recuperación con un correo registrado",
+   "esperado": "Se envía un enlace válido por 30 minutos",
+   "obtenido": "200; se guardó la huella del enlace (longitud 64) con vencimiento en 30 min; enlace generado",
+   "ok": true,
+   "nota": "En local el SMTP está desactivado a propósito: el enlace se registra en el log en vez de enviarse. El envío real por correo no se probó",
+   "original": true
+  },
+  {
+   "clave": "AUT-08",
+   "caso": "Recuperación con un correo no registrado",
+   "esperado": "Respuesta idéntica a la anterior",
+   "obtenido": "200; cuerpo idéntico: True",
+   "ok": true,
+   "nota": "",
+   "original": true
+  },
+  {
+   "clave": "AUT-09",
+   "caso": "Restablecer con un enlace ya usado o inválido",
+   "esperado": "Se rechaza el cambio",
+   "obtenido": "primer uso 200 y login con la nueva 200; reutilizado 400; inventado 400",
+   "ok": true,
+   "nota": "",
+   "original": true
+  },
+  {
+   "clave": "AUT-10",
+   "caso": "Nueva contraseña de menos de 8 caracteres",
+   "esperado": "Se rechaza con mensaje de validación",
+   "obtenido": "400: La contraseña debe tener al menos 8 caracteres.",
+   "ok": true,
+   "nota": "",
+   "original": true
+  },
+  {
+   "clave": "AUT-11",
+   "caso": "Registro con contraseña de más de 72 bytes",
+   "esperado": "400 con mensaje de validación",
+   "obtenido": "400: La contraseña no puede superar 72 bytes (72 caracteres sin acentos ni símbolos especiales).",
+   "ok": true,
+   "nota": "",
+   "original": false
+  },
+  {
+   "clave": "AUT-12",
+   "caso": "Más de 60 intentos de inicio de sesión en un minuto",
+   "esperado": "429",
+   "obtenido": "401 en los primeros 60; luego 429",
+   "ok": true,
+   "nota": "",
+   "original": false
+  },
+  {
+   "clave": "NOT-01",
+   "caso": "El Administrador crea una noticia con audiencia por rol, carrera y semestre",
+   "esperado": "Se muestra solo a los destinatarios",
+   "obtenido": "creación 201; la ve Alumno 1.er sem: True; Alumno 5.º sem: False; Docente: False",
+   "ok": true,
+   "nota": "",
+   "original": true
+  },
+  {
+   "clave": "NOT-02",
+   "caso": "Crear una noticia sin indicar vigencia",
+   "esperado": "Vigencia de 6 meses",
+   "obtenido": "201; vigente hasta 2027-05-19 (publicada 2026-11-19)",
+   "ok": true,
+   "nota": "",
+   "original": true
+  },
+  {
+   "clave": "NOT-03",
+   "caso": "Vigencia anterior a la publicación",
+   "esperado": "400 con mensaje explicativo",
+   "obtenido": "400: La fecha de vigencia no puede ser anterior a la fecha de publicación",
+   "ok": true,
+   "nota": "",
+   "original": true
+  },
+  {
+   "clave": "NOT-04",
+   "caso": "Consultar noticias cuando una ya venció",
+   "esperado": "No aparece y su enlace responde 404",
+   "obtenido": "en listado: False; detalle 404",
+   "ok": true,
+   "nota": "La fecha se adelantó en la copia con SQL para simular el vencimiento",
+   "original": true
+  },
+  {
+   "clave": "NOT-05",
+   "caso": "El Administrador consulta las noticias expiradas",
+   "esperado": "Aparecen marcadas como expiradas",
+   "obtenido": "200; incluida: True; vigente=False",
+   "ok": true,
+   "nota": "La etiqueta «Expirada» se comprueba en pantalla",
+   "pantalla": "En pantalla, la administración de noticias muestra «Expirada el …» en la columna Vigencia (captura: NOT-05_etiqueta_expirada_admin.jpg)",
+   "original": true
+  },
+  {
+   "clave": "NOT-06",
+   "caso": "Renovar una noticia expirada cambiando «Vigente hasta»",
+   "esperado": "Vuelve a mostrarse",
+   "obtenido": "edición 204; detalle para Alumno 200",
+   "ok": true,
+   "nota": "",
+   "original": true
+  },
+  {
+   "clave": "NOT-07",
+   "caso": "Editar una noticia",
+   "esperado": "Cambios en listado y detalle",
+   "obtenido": "204; detalle: «Cap4 NOT-07 titulo editado»; en listado: True",
+   "ok": true,
+   "nota": "",
+   "original": true
+  },
+  {
+   "clave": "NOT-08",
+   "caso": "Eliminar una noticia",
+   "esperado": "Deja de mostrarse; Activo = 0",
+   "obtenido": "204; detalle 404; en BD Activo=0",
+   "ok": true,
+   "nota": "",
+   "original": true
+  },
+  {
+   "clave": "NOT-09",
+   "caso": "Un Docente edita o elimina la noticia de otro autor",
+   "esperado": "403",
+   "obtenido": "editar 403; eliminar 403",
+   "ok": true,
+   "nota": "",
+   "original": false
+  },
+  {
+   "clave": "NOT-10",
+   "caso": "Un Alumno abre por URL una noticia dirigida a otra audiencia",
+   "esperado": "404",
+   "obtenido": "404",
+   "ok": true,
+   "nota": "",
+   "original": false
+  },
+  {
+   "clave": "EVD-01",
+   "caso": "El Administrador crea un evento",
+   "esperado": "Queda publicado con su audiencia",
+   "obtenido": "201; lo ve un Alumno: True; lo ve un Docente (no destinatario): False",
+   "ok": true,
+   "nota": "",
+   "original": true
+  },
+  {
+   "clave": "EVD-02",
+   "caso": "Un Docente publica un documento con archivo",
+   "esperado": "Se guarda y puede descargarse",
+   "obtenido": "subida 200; descarga 200 (69 bytes, igual al original: True)",
+   "ok": true,
+   "nota": "",
+   "original": true
+  },
+  {
+   "clave": "EVD-03",
+   "caso": "Un Docente edita su propio documento",
+   "esperado": "Edición permitida",
+   "obtenido": "204",
+   "ok": true,
+   "nota": "",
+   "original": true
+  },
+  {
+   "clave": "EVD-04",
+   "caso": "Un Docente edita el documento de otro",
+   "esperado": "403",
+   "obtenido": "403",
+   "ok": true,
+   "nota": "",
+   "original": true
+  },
+  {
+   "clave": "EVD-05",
+   "caso": "Un Alumno intenta crear un evento o un documento",
+   "esperado": "403",
+   "obtenido": "evento 403; documento 403",
+   "ok": true,
+   "nota": "",
+   "original": true
+  },
+  {
+   "clave": "EVD-06",
+   "caso": "Un Alumno descarga un documento dirigido a su perfil",
+   "esperado": "Descarga correcta",
+   "obtenido": "200 (69 bytes)",
+   "ok": true,
+   "nota": "",
+   "original": true
+  },
+  {
+   "clave": "EVD-07",
+   "caso": "Un Alumno descarga un documento dirigido a otro perfil",
+   "esperado": "404",
+   "obtenido": "404",
+   "ok": true,
+   "nota": "",
+   "original": false
+  },
+  {
+   "clave": "COM-01",
+   "caso": "Un usuario con sesión comenta una noticia",
+   "esperado": "Aparece con su nombre y fecha",
+   "obtenido": "201; autor «Alumno Uno Cap4»; fecha 2026-11-19; visible para otros: True",
+   "ok": true,
+   "nota": "",
+   "original": true
+  },
+  {
+   "clave": "COM-02",
+   "caso": "Intento de comentar sin sesión",
+   "esperado": "401",
+   "obtenido": "401",
+   "ok": true,
+   "nota": "La invitación a iniciar sesión en la interfaz se comprueba en pantalla",
+   "pantalla": "En pantalla, sin sesión aparece «Inicia sesión para comentar» con enlace al login (captura: COM-02_SEG-06_comentarios_sin_sesion.jpg)",
+   "original": true
+  },
+  {
+   "clave": "COM-03",
+   "caso": "Comentario vacío o de más de 1,000 caracteres",
+   "esperado": "Se rechaza con mensaje",
+   "obtenido": "vacío 400; 1,001 caracteres 400; 1,000 caracteres 201",
+   "ok": true,
+   "nota": "",
+   "original": true
+  },
+  {
+   "clave": "COM-04",
+   "caso": "Petición que incluye el identificador de otro usuario",
+   "esperado": "Se ignora; autor = usuario del token",
+   "obtenido": "201; autor guardado id 16 (token: 16, enviado: 13)",
+   "ok": true,
+   "nota": "",
+   "original": true
+  },
+  {
+   "clave": "COM-05",
+   "caso": "Un Alumno elimina el comentario de otra persona",
+   "esperado": "403",
+   "obtenido": "403",
+   "ok": true,
+   "nota": "",
+   "original": true
+  },
+  {
+   "clave": "COM-06",
+   "caso": "El Administrador elimina cualquier comentario",
+   "esperado": "Eliminación permitida",
+   "obtenido": "204",
+   "ok": true,
+   "nota": "",
+   "original": true
+  },
+  {
+   "clave": "COM-07",
+   "caso": "Comentar una noticia expirada",
+   "esperado": "Se rechaza",
+   "obtenido": "400: La noticia ya no está vigente y no admite comentarios",
+   "ok": true,
+   "nota": "",
+   "original": true
+  },
+  {
+   "clave": "COM-08",
+   "caso": "El autor elimina su propio comentario",
+   "esperado": "Eliminación permitida",
+   "obtenido": "204",
+   "ok": true,
+   "nota": "",
+   "pantalla": "En pantalla, el botón «Eliminar comentario» solo aparece en el comentario propio; pide confirmación en ventana modal y lo quita (captura: COM-08_confirmar_borrado.jpg)",
+   "original": false
+  },
+  {
+   "clave": "USR-01",
+   "caso": "El Administrador crea un usuario con rol",
+   "esperado": "Se crea y puede iniciar sesión",
+   "obtenido": "201; login 200 como Docente",
+   "ok": true,
+   "nota": "",
+   "original": true
+  },
+  {
+   "clave": "USR-02",
+   "caso": "El Administrador cambia el rol de un usuario",
+   "esperado": "La sesión activa se invalida y el nuevo rol aplica al volver a entrar",
+   "obtenido": "cambio 204; token anterior 401; nuevo login como Alumno",
+   "ok": true,
+   "nota": "",
+   "original": true
+  },
+  {
+   "clave": "USR-03",
+   "caso": "El Administrador desactiva un usuario",
+   "esperado": "No puede iniciar sesión; registro conservado",
+   "obtenido": "204; login 401; token vigente 401; en BD Activo=0",
+   "ok": true,
+   "nota": "",
+   "original": true
+  },
+  {
+   "clave": "USR-04",
+   "caso": "Un usuario edita su perfil",
+   "esperado": "Solo cambian sus propios datos",
+   "obtenido": "200; el perfil de otro usuario no cambió: True",
+   "ok": true,
+   "nota": "",
+   "original": true
+  },
+  {
+   "clave": "USR-05",
+   "caso": "Un Alumno intenta abrir la administración",
+   "esperado": "Se le niega el acceso",
+   "obtenido": "API de usuarios 403",
+   "ok": true,
+   "nota": "La redirección de /admin se comprueba en pantalla",
+   "pantalla": "En pantalla, /admin/usuarios con sesión de Alumno redirige a /no-autorizado («Acceso no autorizado») (captura: USR-05_admin_como_alumno.jpg)",
+   "original": true
+  },
+  {
+   "clave": "SEG-01",
+   "caso": "Revisar la columna de contraseñas",
+   "esperado": "Hash BCrypt, nunca texto plano",
+   "obtenido": "18 de 18 contraseñas son hashes BCrypt",
+   "ok": true,
+   "nota": "",
+   "original": true
+  },
+  {
+   "clave": "SEG-02",
+   "caso": "Intentar elegir rol en el registro público",
+   "esperado": "El rol siempre es Alumno",
+   "obtenido": "200; rol asignado Alumno",
+   "ok": true,
+   "nota": "",
+   "original": true
+  },
+  {
+   "clave": "SEG-03",
+   "caso": "Un Alumno llama endpoints de administrador con su token",
+   "esperado": "403",
+   "obtenido": "usuarios 403; solicitudes 403; crear categoría 403",
+   "ok": true,
+   "nota": "",
+   "original": true
+  },
+  {
+   "clave": "SEG-04",
+   "caso": "Petición sin token a un endpoint protegido",
+   "esperado": "401",
+   "obtenido": "usuarios 401; oferta 401; asistente 401",
+   "ok": true,
+   "nota": "",
+   "original": true
+  },
+  {
+   "clave": "SEG-05",
+   "caso": "Entradas con inyección SQL",
+   "esperado": "Sin efecto",
+   "obtenido": "login 401 y 401; búsqueda inyectada 200 con 0 resultados (búsqueda normal: 86)",
+   "ok": true,
+   "nota": "",
+   "original": true
+  },
+  {
+   "clave": "SEG-06",
+   "caso": "Comentario con etiqueta script",
+   "esperado": "Se guarda como texto y no se ejecuta",
+   "obtenido": "201; guardado literalmente: True",
+   "ok": true,
+   "nota": "Que no se ejecute en el navegador se comprueba en pantalla",
+   "pantalla": "En pantalla el comentario se ve como texto; 0 elementos <script> inyectados en la página (captura: COM-02_SEG-06_comentarios_sin_sesion.jpg)",
+   "original": true
+  },
+  {
+   "clave": "SEG-07",
+   "caso": "Token de recuperación",
+   "esperado": "Hash, vence a los 30 min y es de un solo uso",
+   "obtenido": "huella distinta del enlace: True; vencimiento 30 min (AUT-07); reutilización rechazada (AUT-09); tras usarlo la huella se borró: True",
+   "ok": true,
+   "nota": "",
+   "original": true
+  },
+  {
+   "clave": "SEG-08",
+   "caso": "Comunicación cifrada",
+   "esperado": "HTTPS",
+   "obtenido": "Comprobado en el VPS el 19 nov. 2026: 200 con certificado válido y http→https con 301",
+   "ok": true,
+   "nota": "No aplica en local (HTTP); evidencia del sitio público",
+   "original": true
+  },
+  {
+   "clave": "SEG-09",
+   "caso": "Token usado tras cambiar el rol o desactivar la cuenta",
+   "esperado": "401",
+   "obtenido": "ver USR-02 y USR-03: 401 en ambos casos",
+   "ok": true,
+   "nota": "",
+   "original": false
+  },
+  {
+   "clave": "SEG-10",
+   "caso": "Abrir /uploads/… directamente",
+   "esperado": "404",
+   "obtenido": "404 (archivo existente 699818f7-5dc…)",
+   "ok": true,
+   "nota": "",
+   "original": false
+  },
+  {
+   "clave": "SEG-11",
+   "caso": "Subir .exe, más de 20 MiB o con extensión falsa",
+   "esperado": "400",
+   "obtenido": ".exe 400; PDF falso 400; 21 MiB 400",
+   "ok": true,
+   "nota": "",
+   "original": false
+  },
+  {
+   "clave": "INT-01",
+   "caso": "Abrir el portal en teléfono, tableta y computadora",
+   "esperado": "Se adapta sin pérdida de contenido",
+   "obtenido": "375 px y 768 px sin desplazamiento horizontal; menú lateral oculto tras el botón en teléfono; escritorio normal",
+   "ok": true,
+   "nota": "Emulación de tamaño en el navegador integrado (capturas INT-01_*)",
+   "original": true
+  },
+  {
+   "clave": "INT-02",
+   "caso": "Alternar entre modo claro y oscuro",
+   "esperado": "Textos y componentes legibles",
+   "obtenido": "El botón de tema aplica la clase dark; títulos en blanco sobre fondo oscuro; se revirtió a claro",
+   "ok": true,
+   "nota": "Captura INT-02_modo_oscuro.jpg",
+   "original": true
+  },
+  {
+   "clave": "INT-03",
+   "caso": "Abrir el portal en distintos navegadores",
+   "esperado": "Mismo funcionamiento",
+   "obtenido": "No ejecutada: en este equipo solo se probó con el navegador integrado (motor Chromium)",
+   "ok": null,
+   "nota": "Pendiente: repetir manualmente en Safari, Firefox, Opera, Edge y Chrome",
+   "original": true
+  },
+  {
+   "clave": "INT-04",
+   "caso": "Iniciar sesión con cada rol",
+   "esperado": "El menú muestra solo lo permitido",
+   "obtenido": "Alumno: 7 opciones; Docente: además «Mis publicaciones» y «Mis materias»; Administrador: además «Administración»",
+   "ok": true,
+   "nota": "Capturas AUT-03_INT-04_inicio_alumno.jpg e INT-04_inicio_docente.jpg",
+   "original": true
+  },
+  {
+   "clave": "SOL-01",
+   "caso": "Docente solicita una unidad y un Administrador la aprueba",
+   "esperado": "Aprobada; las demás pendientes de la unidad se rechazan",
+   "obtenido": "unidad 774 (Fundamentos de Programación, 1CM1); aprobar 200; Docente 1: Aprobada; Docente 2: Rechazada",
+   "ok": true,
+   "nota": "",
+   "original": false
+  },
+  {
+   "clave": "SOL-02",
+   "caso": "Rechazar o revocar sin motivo",
+   "esperado": "400",
+   "obtenido": "rechazar 400; revocar 400",
+   "ok": true,
+   "nota": "",
+   "original": false
+  },
+  {
+   "clave": "SOL-03",
+   "caso": "Docente publica hacia una unidad que no tiene aprobada",
+   "esperado": "400 (y permitido al Docente aprobado)",
+   "obtenido": "Docente 2 400; Docente 1 201",
+   "ok": true,
+   "nota": "",
+   "original": false
+  },
+  {
+   "clave": "SOL-04",
+   "caso": "Docente aprobado consulta suscritos de su unidad y de otra",
+   "esperado": "Nombre, carrera, semestre y fecha; 404 en la otra",
+   "obtenido": "su unidad 200 (incluye a Alumno Uno: True; contiene correo: False); otra unidad 404",
+   "ok": true,
+   "nota": "",
+   "original": false
+  },
+  {
+   "clave": "ACA-01",
+   "caso": "Alumno agrega unidades de distintos grupos",
+   "esperado": "Se guardan",
+   "obtenido": "altas 200 y 200; grupos en «mis materias»: ['1CM1', '1CM11']",
+   "ok": true,
+   "nota": "El aviso de empalme se comprueba en pantalla",
+   "pantalla": "En pantalla, «Mi perfil» muestra el horario semanal y el aviso «Hay un empalme de horario» al agregar una unidad del mismo día y hora (captura: ACA-01_aviso_empalme.jpg)",
+   "original": false
+  },
+  {
+   "clave": "ACA-02",
+   "caso": "Alumno agrega un grupo completo y quita todas",
+   "esperado": "Altas y bajas correctas",
+   "obtenido": "grupo 1CM11: alta 200 (9 materias); quitar todas 200 → 0",
+   "ok": true,
+   "nota": "",
+   "original": false
+  },
+  {
+   "clave": "AUD-01",
+   "caso": "Noticia dirigida a una unidad de oferta",
+   "esperado": "La ve el alumno que agregó la unidad, no los demás",
+   "obtenido": "Alumno con la unidad: True; Alumno sin ella: False",
+   "ok": true,
+   "nota": "",
+   "original": false
+  },
+  {
+   "clave": "ASI-01",
+   "caso": "Pregunta «horario del grupo 1CM10»",
+   "esperado": "Respuesta exacta sin el modelo",
+   "obtenido": "200 en 0.12 s; «Horario del grupo 1CM10\nPeriodo 2027-1, plan 2024, Ingeniería en Comun…»",
+   "ok": true,
+   "nota": "",
+   "original": false
+  },
+  {
+   "clave": "ASI-02a",
+   "caso": "Más de 5 preguntas en un minuto",
+   "esperado": "429 con Retry-After",
+   "obtenido": "códigos [200, 200, 200, 200, 200, 429]; Retry-After=60",
+   "ok": true,
+   "nota": "",
+   "original": false
+  },
+  {
+   "clave": "ASI-02b",
+   "caso": "Segunda generación mientras el modelo responde",
+   "esperado": "503 con Retry-After",
+   "obtenido": "dos alumnos de la audiencia preguntan a la vez: códigos 200 y 503; Retry-After=5; la respuesta generada tardó 1.6 s",
+   "ok": true,
+   "nota": "Repetida: en la primera ejecución la segunda pregunta la hizo un Docente fuera de la audiencia y se respondió sin el modelo",
+   "original": false
+  },
+  {
+   "clave": "REN-01",
+   "caso": "20 solicitudes simultáneas al listado de noticias",
+   "esperado": "Todas responden; tiempos registrados",
+   "obtenido": "20/20 en 200: True; promedio 30 ms, p95 37 ms, máximo 37 ms",
+   "ok": true,
+   "nota": "Medido en local (no en el VPS)",
+   "original": false
+  },
+  {
+   "clave": "REN-02",
+   "caso": "Tiempo de una respuesta redactada por el modelo",
+   "esperado": "Registrar tiempo",
+   "obtenido": "66.4 s con llama3.2:3b en local; «No tengo información específica sobre noticias de becas de transporte en la fuente proporc…»",
+   "ok": true,
+   "nota": "Equipo local; en el VPS (1 vCPU) se midieron ≈ 45–65 s el 10 nov. 2026",
+   "original": false
+  }
+ ],
+ "rendimiento": {
+  "1": {
+   "ok": 1,
+   "prom": 26.77679999032989,
+   "p95": 26.77679999032989,
+   "max": 26.77679999032989,
+   "total": 0.027165599982254207
+  },
+  "10": {
+   "ok": 10,
+   "prom": 33.486909995554015,
+   "p95": 35.162099986337125,
+   "max": 36.10280004795641,
+   "total": 0.04262439999729395
+  },
+  "20": {
+   "ok": 20,
+   "prom": 29.589160002069548,
+   "p95": 36.79220000049099,
+   "max": 37.30829997221008,
+   "total": 0.06504239997593686
+  },
+  "50": {
+   "ok": 50,
+   "prom": 41.409609998809174,
+   "p95": 54.82350004604086,
+   "max": 59.29260002449155,
+   "total": 0.14368179999291897
+  }
+ },
+ "resumen": {
+  "AUT": {
+   "orig": [
+    10,
+    10,
+    0,
+    0
+   ],
+   "nuevas": [
+    2,
+    2,
+    0,
+    0
+   ]
+  },
+  "NOT": {
+   "orig": [
+    8,
+    8,
+    0,
+    0
+   ],
+   "nuevas": [
+    2,
+    2,
+    0,
+    0
+   ]
+  },
+  "EVD": {
+   "orig": [
+    6,
+    6,
+    0,
+    0
+   ],
+   "nuevas": [
+    1,
+    1,
+    0,
+    0
+   ]
+  },
+  "COM": {
+   "orig": [
+    7,
+    7,
+    0,
+    0
+   ],
+   "nuevas": [
+    1,
+    1,
+    0,
+    0
+   ]
+  },
+  "USR": {
+   "orig": [
+    5,
+    5,
+    0,
+    0
+   ],
+   "nuevas": [
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  "SEG": {
+   "orig": [
+    8,
+    8,
+    0,
+    0
+   ],
+   "nuevas": [
+    3,
+    3,
+    0,
+    0
+   ]
+  },
+  "INT": {
+   "orig": [
+    4,
+    3,
+    0,
+    1
+   ],
+   "nuevas": [
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  "SOL": {
+   "orig": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "nuevas": [
+    4,
+    4,
+    0,
+    0
+   ]
+  },
+  "ACA": {
+   "orig": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "nuevas": [
+    2,
+    2,
+    0,
+    0
+   ]
+  },
+  "AUD": {
+   "orig": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "nuevas": [
+    1,
+    1,
+    0,
+    0
+   ]
+  },
+  "ASI": {
+   "orig": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "nuevas": [
+    3,
+    3,
+    0,
+    0
+   ]
+  },
+  "REN": {
+   "orig": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "nuevas": [
+    2,
+    2,
+    0,
+    0
+   ]
+  }
+ }
+}

@@ -1,0 +1,241 @@
+using System.Security.Claims;
+using System.Text.Json;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using PortalNoticiasAPI.Data;
+using PortalNoticiasAPI.DTOs;
+using PortalNoticiasAPI.Models;
+using PortalNoticiasAPI.Services;
+
+namespace PortalNoticiasAPI.Controllers
+{
+    [ApiController]
+    [Route("api/[controller]")]
+    public class NoticiasController : ControllerBase
+    {
+        private readonly PortalNoticiasContext _context;
+        private readonly AudienciaAccesoService _audiencias;
+        private readonly NotificacionCorreoService _notificaciones;
+        private readonly int _mesesVigencia;
+        private static readonly JsonSerializerOptions JsonOpts = new(JsonSerializerDefaults.Web);
+
+        public NoticiasController(PortalNoticiasContext context, NotificacionCorreoService notificaciones,
+            AudienciaAccesoService audiencias, IConfiguration configuration)
+        {
+            _context = context;
+            _audiencias = audiencias;
+            _notificaciones = notificaciones;
+            _mesesVigencia = VigenciaNoticias.Meses(configuration);
+        }
+
+        private int? GetUserId() =>
+            int.TryParse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value, out var id) ? id : null;
+
+        // El Administrador puede modificar cualquier noticia; el Docente, solo las suyas.
+        private bool PuedeModificar(Noticia n) =>
+            User.IsInRole("Administrador") || n.IdUsuario == GetUserId();
+
+        // El autor autenticado puede consultar sus propias noticias aunque no sea su audiencia.
+        private bool PuedeVerNoticia(Noticia n, Usuario? usuario) =>
+            (usuario is not null && n.IdUsuario == usuario.IdUsuario) ||
+            _audiencias.PuedeVer(n.AudienciaJson, usuario);
+
+        // Una noticia expirada solo la ven el Administrador y su autor (para consultarla o renovarla).
+        private bool PuedeVerExpirada(Noticia n, Usuario? usuario) =>
+            User.IsInRole("Administrador") || (usuario is not null && n.IdUsuario == usuario.IdUsuario);
+
+        // Convierte la entidad (con AudienciaJson como texto) al DTO que consume el frontend
+        private static NoticiaDto ToDto(Noticia n)
+        {
+            AudienciaDto audiencia;
+            try
+            {
+                audiencia = string.IsNullOrWhiteSpace(n.AudienciaJson)
+                    ? new AudienciaDto()
+                    : JsonSerializer.Deserialize<AudienciaDto>(n.AudienciaJson, JsonOpts) ?? new AudienciaDto();
+            }
+            catch
+            {
+                audiencia = new AudienciaDto();
+            }
+            audiencia.Prioridad = n.Prioridad;
+
+            return new NoticiaDto
+            {
+                IdNoticia = n.IdNoticia,
+                Titulo = n.Titulo,
+                Contenido = n.Contenido,
+                IdUsuario = n.IdUsuario,
+                AutorNombre = n.Usuario?.Nombre,
+                IdCategoria = n.IdCategoria,
+                CategoriaNombre = n.Categoria?.CategoriaNombre,
+                FechaPublicacion = n.FechaPublicacion,
+                FechaAlta = n.FechaAlta,
+                Activo = n.Activo,
+                FechaExpiracion = n.FechaExpiracion,
+                Vigente = n.Activo && VigenciaNoticias.EsVigente(n, VigenciaNoticias.Hoy()),
+                Audiencia = audiencia
+            };
+        }
+
+        // Por defecto solo noticias vigentes. Con ?incluirExpiradas=true se agregan las expiradas
+        // que el usuario puede renovar: todas para el Administrador, las propias para su autor.
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<NoticiaDto>>> GetNoticias([FromQuery] bool incluirExpiradas = false)
+        {
+            var noticias = await _context.Noticias
+                .Include(n => n.Usuario)
+                .Include(n => n.Categoria)
+                .Where(n => n.Activo)
+                .OrderByDescending(n => n.FechaPublicacion)
+                .ToListAsync();
+
+            var hoy = VigenciaNoticias.Hoy();
+            var usuario = await _audiencias.UsuarioActualAsync(User);
+            return Ok(noticias
+                .Where(n => VigenciaNoticias.EsVigente(n, hoy) || (incluirExpiradas && PuedeVerExpirada(n, usuario)))
+                .Where(n => PuedeVerNoticia(n, usuario))
+                .Select(ToDto).ToList());
+        }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<NoticiaDto>> GetNoticia(int id)
+        {
+            var noticia = await _context.Noticias
+                .Include(n => n.Usuario)
+                .Include(n => n.Categoria)
+                .FirstOrDefaultAsync(n => n.IdNoticia == id && n.Activo);
+
+            if (noticia == null)
+                return NotFound(new { mensaje = $"No se encontró la noticia con id {id}" });
+
+            var usuario = await _audiencias.UsuarioActualAsync(User);
+            if (!PuedeVerNoticia(noticia, usuario)) return NotFound();
+
+            if (!VigenciaNoticias.EsVigente(noticia, VigenciaNoticias.Hoy()) && !PuedeVerExpirada(noticia, usuario))
+                return NotFound(new { mensaje = "Esta noticia ya no está vigente" });
+
+            return Ok(ToDto(noticia));
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Administrador,Docente")]
+        public async Task<ActionResult<NoticiaDto>> CrearNoticia(NoticiaCreateDto dto)
+        {
+            // La autoria se obtiene del JWT, no de un IdUsuario manipulable por el cliente.
+            if (!int.TryParse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value, out var idUsuario))
+                return Unauthorized(new { mensaje = "No se pudo identificar al usuario autenticado" });
+
+            var usuarioExiste = await _context.Usuarios.AnyAsync(u => u.IdUsuario == idUsuario && u.Activo);
+            if (!usuarioExiste)
+                return Unauthorized(new { mensaje = "El usuario autenticado no existe o está inactivo" });
+
+            if (dto.IdCategoria.HasValue)
+            {
+                var categoriaExiste = await _context.Categorias.AnyAsync(c => c.IdCategoria == dto.IdCategoria && c.Activo);
+                if (!categoriaExiste)
+                    return BadRequest(new { mensaje = "La categoría especificada no existe o está inactiva" });
+            }
+
+            var audiencia = dto.Audiencia ?? new AudienciaDto();
+            if (!await _audiencias.PuedePublicarAsync(User, audiencia))
+                return BadRequest(new { mensaje = "Las materias, grupos de horario o academias destinatarios deben estar activos y, para un Docente, corresponder a una materia que tenga aprobada." });
+
+            // Vigencia: si no se indica, dura _mesesVigencia meses (6 por defecto) desde la publicación.
+            var fechaPublicacion = dto.FechaPublicacion == default ? VigenciaNoticias.Hoy() : dto.FechaPublicacion.Date;
+            var fechaExpiracion = (dto.FechaExpiracion ?? fechaPublicacion.AddMonths(_mesesVigencia)).Date;
+            if (fechaExpiracion < fechaPublicacion)
+                return BadRequest(new { mensaje = "La fecha de vigencia no puede ser anterior a la fecha de publicación" });
+
+            var noticia = new Noticia
+            {
+                Titulo = dto.Titulo,
+                Contenido = dto.Contenido,
+                IdUsuario = idUsuario,
+                IdCategoria = dto.IdCategoria,
+                FechaPublicacion = fechaPublicacion,
+                FechaExpiracion = fechaExpiracion,
+                Prioridad = string.IsNullOrWhiteSpace(audiencia.Prioridad) ? "normal" : audiencia.Prioridad,
+                AudienciaJson = JsonSerializer.Serialize(audiencia, JsonOpts),
+                FechaAlta = DateTime.Now,
+                Activo = true
+            };
+
+            _context.Noticias.Add(noticia);
+            await _context.SaveChangesAsync();
+
+            _notificaciones.NotificarPublicacion(
+                "Noticia", noticia.Titulo, noticia.Contenido, $"/noticias/{noticia.IdNoticia}",
+                noticia.AudienciaJson, noticia.Prioridad, noticia.IdUsuario);
+
+            var creada = await _context.Noticias
+                .Include(n => n.Usuario)
+                .Include(n => n.Categoria)
+                .FirstAsync(n => n.IdNoticia == noticia.IdNoticia);
+
+            return CreatedAtAction(nameof(GetNoticia), new { id = noticia.IdNoticia }, ToDto(creada));
+        }
+
+        [HttpPut("{id}")]
+        [Authorize(Roles = "Administrador,Docente")]
+        public async Task<IActionResult> ActualizarNoticia(int id, NoticiaUpdateDto dto)
+        {
+            var noticia = await _context.Noticias.FindAsync(id);
+            if (noticia == null || !noticia.Activo)
+                return NotFound(new { mensaje = $"No se encontró la noticia con id {id}" });
+
+            // El autor original se conserva aunque edite un Administrador.
+            if (!PuedeModificar(noticia))
+                return StatusCode(403, new { mensaje = "Solo puedes modificar las noticias que tú publicaste" });
+
+            if (dto.IdCategoria.HasValue)
+            {
+                var categoriaExiste = await _context.Categorias.AnyAsync(c => c.IdCategoria == dto.IdCategoria && c.Activo);
+                if (!categoriaExiste)
+                    return BadRequest(new { mensaje = "La categoría especificada no existe o está inactiva" });
+            }
+
+            var audiencia = dto.Audiencia ?? new AudienciaDto();
+            if (!await _audiencias.PuedePublicarAsync(User, audiencia))
+                return BadRequest(new { mensaje = "Las materias, grupos de horario o academias destinatarios deben estar activos y, para un Docente, corresponder a una materia que tenga aprobada." });
+
+            // Renovar una noticia = cambiar su fecha de vigencia. Si no se manda, se conserva la actual.
+            if (dto.FechaExpiracion.HasValue)
+            {
+                var nuevaExpiracion = dto.FechaExpiracion.Value.Date;
+                if (nuevaExpiracion < dto.FechaPublicacion.Date)
+                    return BadRequest(new { mensaje = "La fecha de vigencia no puede ser anterior a la fecha de publicación" });
+                noticia.FechaExpiracion = nuevaExpiracion;
+            }
+
+            noticia.Titulo = dto.Titulo;
+            noticia.Contenido = dto.Contenido;
+            noticia.IdCategoria = dto.IdCategoria;
+            noticia.FechaPublicacion = dto.FechaPublicacion;
+            noticia.Prioridad = string.IsNullOrWhiteSpace(audiencia.Prioridad) ? "normal" : audiencia.Prioridad;
+            noticia.AudienciaJson = JsonSerializer.Serialize(audiencia, JsonOpts);
+
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
+
+        [HttpDelete("{id}")]
+        [Authorize(Roles = "Administrador,Docente")]
+        public async Task<IActionResult> EliminarNoticia(int id)
+        {
+            var noticia = await _context.Noticias.FindAsync(id);
+            if (noticia == null || !noticia.Activo)
+                return NotFound(new { mensaje = $"No se encontró la noticia con id {id}" });
+
+            if (!PuedeModificar(noticia))
+                return StatusCode(403, new { mensaje = "Solo puedes eliminar las noticias que tú publicaste" });
+
+            noticia.Activo = false;
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
+    }
+}

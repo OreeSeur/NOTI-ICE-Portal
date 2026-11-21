@@ -1,0 +1,46 @@
+# Dependencias y compilaciones
+**/node_modules/
+**/dist/
+**/dist-ssr/
+**/coverage/
+**/bin/
+**/obj/
+
+# Configuracion privada
+**/.env
+**/.env.*
+!**/.env.example
+!frontend/.env.ollama
+**/appsettings.json
+**/appsettings.*.json
+!**/appsettings.example.json
+
+# Archivos personales y de desarrollo
+**/.vs/
+**/.vscode/
+**/.idea/
+*.csproj.user
+*.suo
+*.log
+.DS_Store
+Thumbs.db
+
+# Archivos cargados y credenciales
+**/uploads/
+*.pem
+*.pfx
+*.key
+
+# Respaldos y volcados de base de datos
+*.bak
+*.dump
+*.sql.gz
+*.zip
+*.rar
+*.7z
+notice_portal_noticias.sql
+
+# Borradores de la tesis: solo locales (el repositorio es publico).
+# Se conservan en Git los resultados de pruebas de docs/tesis/pruebas/.
+docs/tesis/*
+!docs/tesis/pruebas/
