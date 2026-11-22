@@ -8,6 +8,7 @@ numerada en el orden de lectura recomendado.
 | Documento | Contenido |
 |---|---|
 | [Manual_de_usuario.pdf](manual/Manual_de_usuario.pdf) | Uso del portal por perfil (acceso, funciones comunes, Alumno, Docente, Administrador y teléfono), con capturas de cada pantalla. También en [Word](manual/Manual_de_usuario.docx). |
+| [Diagramas_de_flujo_vistas.pdf](manual/diagramas_de_flujo/Diagramas_de_flujo_vistas.pdf) | Diagrama de flujo de cada una de las 33 vistas del manual junto a su captura. También en [Word](manual/diagramas_de_flujo/Diagramas_de_flujo_vistas.docx). Imágenes por vista en [`diagrama_y_captura/`](manual/diagramas_de_flujo/diagrama_y_captura) (diagrama y captura, formato 16:9) y [`diagramas/`](manual/diagramas_de_flujo/diagramas) (solo el diagrama). |
 
 ## Frontend (`frontend/`)
 
